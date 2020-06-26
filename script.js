@@ -24,7 +24,7 @@ const initialize = () => {
 }
 
 const setDatePicker = () => {
-    const now = moment(new Date()).format('YYYY-MM-DD');
+    const now = moment(new Date()).format('yyyy-MM-DD');
 
     const datePicker = document.getElementById("datePicker");
     datePicker.value = datePicker.max = now;
@@ -133,7 +133,6 @@ const addCircle = (date, color, entry) => {
             }
 
             const entryHeader = document.createElement("div");
-            entryHeader.className = "historyEntryHeader";
             const entryTitleText = document.createTextNode(getReadableDate(date));
             entryHeader.appendChild(entryTitleText);
 

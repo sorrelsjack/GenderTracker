@@ -77,9 +77,6 @@ button {
     display: none;
     white-space: pre-wrap;
 }
-.historyEntryHeader {
-
-}
 .historyEntryBody {
     position: relative;
     top: 50%;
