@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gender Tracker</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://unpkg.com/moment"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body onload="initialize()">
+    <div class="title">
+        Gender Tracker
+    </div>
+    <div class="wrapper">
+        <div class="historyContainer" id="historyContainer">
+            <span>History (Most Recent to Least Recent)</span>
+            <div class="circlesContainer" id="circlesContainer"></div>
+            <div class="historyEntryContainer" id="historyEntryContainer"></div>
+            <button onclick="handleClearHistoryPressed()">Clear History</button>
+        </div>
+        <div class="mainContainer">
+            <div>
+                <p class="genderLabel">Feminine</p>
+                <input class="feminineRange" type="range" min="0" max="100" value="0" class="slider"
+                    onchange="handleRangeValueChange(event)" id="feminineRange">
+            </div>
+            <div>
+                <p class="genderLabel">Non-Binary</p>
+                <input class="nonBinaryRange" type="range" min="0" max="100" value="0" class="slider"
+                    onchange="handleRangeValueChange(event)" id="nonBinaryRange">
+            </div>
+            <div>
+                <p class="genderLabel">Masculine</p>
+                <input class="masculineRange" type="range" min="0" max="100" value="0" class="slider"
+                    onchange="handleRangeValueChange(event)" id="masculineRange">
+            </div>
+            <div>
+                <p class="genderLabel">Sense of Gender</p>
+                <input class="senseOfGenderRange" type="range" min="0" max="100" value="0" class="slider"
+                    onchange="handleRangeValueChange(event)" id="senseOfGenderRange">
+            </div>
+            <div class="currentCircleContainer" onmouseover="handleCircleMouseover()">
+                <div class="circle tooltip" id="currentCircle">
+                    <span class="tooltiptext" id="tooltipText"></span>
+                </div>
+            </div>
+            <div class="logSectionContainer">
+                <input type="datetime-local" step="1" id="datePicker"></input>
+                <textarea class="logTextArea" rows="7" id="logTextArea"></textarea>
+                <button onclick="handleLogGenderButtonPressed()">Log This Gender</button>
+            </div>
+        </div>
+        <div class="chartContainer">
+            <span>Coming Soon :)</span>
+        </div>
+    </div>
+</body>
+</html>

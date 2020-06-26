@@ -1,0 +1,189 @@
+@font-face {
+    font-family: Titillium;
+    src: url('Titillium_Web/TitilliumWeb-Regular.ttf') format('truetype');
+}
+html {
+    font-family: Titillium;
+    height: 90%;
+}
+body {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+}
+button {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+.title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.historyContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    width: 33.33%;
+    padding-top: 15pt;
+    padding-bottom: 15pt;
+    background-color: rgba(0, 0, 0, .1);
+}
+.historyContainer button {
+    margin: auto;
+    margin-top: 5pt;
+    width: 40%;
+}
+.circlesContainer {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15pt;
+    padding-bottom: 15pt;
+}
+.historyCircle {
+    margin-left: 5pt;
+    margin-right: 5pt;
+    margin-top: 5pt;
+}
+.historyEntryContainer {
+    padding-top: 15pt;
+    padding-bottom: 15pt;
+    padding-left: 15pt;
+    padding-right: 15pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    height: 60%;
+    background-color: white;
+    display: none;
+    white-space: pre-wrap;
+}
+.historyEntryHeader {
+
+}
+.historyEntryBody {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.mainContainer {
+    margin: auto;
+    text-align: center;
+    width: 33.33%;
+    height: 100%;
+}
+.chartContainer {
+    width: 33.33%;
+    background-color: rgba(0, 0, 0, .1);
+}
+.logSectionContainer {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    margin: auto;
+}
+.logTextArea {
+    resize: none;
+    margin-bottom: 15pt;
+}
+.circle {
+    height: 50px;
+    width: 50px;
+    background-color: #00000000;;
+    border-radius: 50%;
+    display: inline-block;
+}
+.currentCircleContainer {
+    margin-top: 20pt;
+    margin-bottom: 20pt;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border: 0.2px solid rgba(0, 0, 0, .3);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    width: max-content;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    position: absolute;
+    top: -5px;
+    left: 105%;
+    z-index: 1;
+  }
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 15%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.tooltip .percentageContainer {
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    background-color: grey;
+    margin-top: 10pt;
+}
+.genderLabel {
+    font-size: 16pt;
+}
+input[type=range]{
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+}
+::-webkit-slider-runnable-track {
+    background: rgb(175, 175, 175);
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid #999;
+}
+input[id=feminineRange]::-webkit-slider-thumb {
+    box-shadow: -100vw 0 0 100vw #ff0000;
+}
+input[id=masculineRange]::-webkit-slider-thumb {
+    box-shadow: -100vw 0 0 100vw #0000ff;
+}
+input[id=nonBinaryRange]::-webkit-slider-thumb {
+    box-shadow: -100vw 0 0 100vw #00ff00;
+}
+input[id=senseOfGenderRange]::-webkit-slider-thumb {
+    box-shadow: -100vw 0 0 100vw #777777;
+}
