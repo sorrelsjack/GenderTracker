@@ -205,8 +205,7 @@ const addCircle = (date, color, entry) => {
 // TODO: Chart
 // TODO: Favicon (Jane will do)
 // TODO: Styling
-// TODO: Visual indicator that a circle has an entry for it?
-// TODO: Fix for FF and mobile
+// TODO: Fix for mobile
 // TODO: Mobile app?
 // TOOD: Edit entries
 const populateCirclesContainer = () => {

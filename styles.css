@@ -4,7 +4,6 @@
 }
 html {
     font-family: Titillium;
-    height: 90%;
 }
 body {
     width: 90%;
@@ -33,9 +32,9 @@ button {
     flex-direction: row;
 }
 .historyContainer {
+    height: fit-content;
     display: flex;
     flex-direction: column;
-    position: relative;
     text-align: center;
     width: 33.33%;
     padding-top: 15pt;
@@ -72,27 +71,25 @@ button {
     padding-right: 15pt;
     margin-top: 10pt;
     margin-bottom: 10pt;
-    height: 60%;
     background-color: white;
     display: none;
     white-space: pre-wrap;
 }
 .historyEntryBody {
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 10px;
 }
 .mainContainer {
-    margin: auto;
+    display: inline;
+    flex-direction: column;
     text-align: center;
     width: 33.33%;
-    height: 100%;
+    padding-top: 15pt;
+    padding-bottom: 15pt;
 }
 .chartContainer {
     display: flex;
     flex-direction: column;
-    position: relative;
     text-align: center;
     width: 33.33%;
     padding-top: 15pt;
