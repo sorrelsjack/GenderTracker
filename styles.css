@@ -168,6 +168,13 @@ input[type=range]{
 ::-webkit-slider-runnable-track {
     background: rgb(175, 175, 175);
 }
+::-moz-range-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    background: rgb(175, 175, 175);
+    border: 0.2px solid #010101;
+  }
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px;
@@ -175,15 +182,35 @@ input[type=range]::-webkit-slider-thumb {
     background: #fff;
     border: 2px solid #999;
 }
+input[type=range]::-moz-range-thumb {
+    border: 2px solid #999;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 0px;
+    cursor: pointer;
+}
 input[id=feminineRange]::-webkit-slider-thumb {
+    box-shadow: -100vw 0 0 100vw #ff0000;
+}
+input[id=feminineRange]::-moz-range-thumb {
     box-shadow: -100vw 0 0 100vw #ff0000;
 }
 input[id=masculineRange]::-webkit-slider-thumb {
     box-shadow: -100vw 0 0 100vw #0000ff;
 }
+input[id=masculineRange]::-moz-range-thumb {
+    box-shadow: -100vw 0 0 100vw #0000ff;
+}
 input[id=nonBinaryRange]::-webkit-slider-thumb {
     box-shadow: -100vw 0 0 100vw #00ff00;
 }
+input[id=nonBinaryRange]::-moz-range-thumb {
+    box-shadow: -100vw 0 0 100vw #00ff00;
+}
 input[id=senseOfGenderRange]::-webkit-slider-thumb {
+    box-shadow: -100vw 0 0 100vw #777777;
+}
+input[id=senseOfGenderRange]::-moz-range-thumb {
     box-shadow: -100vw 0 0 100vw #777777;
 }

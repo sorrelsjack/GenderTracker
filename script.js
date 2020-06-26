@@ -101,6 +101,11 @@ const addCircle = (date, color, entry) => {
             const historyEntryContainer = document.getElementById("historyEntryContainer");
             historyEntryContainer.innerHTML = '';
 
+            if (!entry) {
+                historyEntryContainer.style.display = "none";
+                return;
+            }
+
             const entryHeader = document.createElement("div");
             entryHeader.className = "historyEntryHeader";
             const entryTitleText = document.createTextNode(getReadableDate(date));
@@ -175,6 +180,8 @@ const addCircle = (date, color, entry) => {
 // TODO: Chart
 // TODO: Favicon (Jane will do)
 // TODO: Styling
+// TODO: Visual indicator that a circle has an entry for it?
+// TODO: Fix for FF and mobile
 const populateCirclesContainer = () => {
     const history = arrangeByDescendingDate(fetchHistory());
     history.forEach(h => { addCircle(h.date, h.color, h.entry) });
@@ -188,7 +195,10 @@ const getMostRecentGender = () => arrangeByDescendingDate(fetchHistory())[0];
 
 const restoreLastSavedState = () => {
     const genderColor = getMostRecentGender()?.color;
-    if (!genderColor) return;
+    if (!genderColor) {
+        Object.values(rangeIds).forEach(r => { document.getElementById(r).value = 0 });
+        return;
+    }
 
     const rgba = rgbaAsArray(genderColor);
 
