@@ -20,13 +20,21 @@ const initialize = () => {
     restoreLastSavedState();
     populateCirclesContainer();
     setDatePicker();
+    setTimePicker();
 }
 
 const setDatePicker = () => {
-    const now = moment(new Date()).format('YYYY-MM-DDTHH:mm:ss');
+    const now = moment(new Date()).format('YYYY-MM-DD');
 
-    document.getElementById("datePicker").max = now;
-    document.getElementById("datePicker").value = now;
+    const datePicker = document.getElementById("datePicker");
+    datePicker.value = datePicker.max = now;
+}
+
+const setTimePicker = () => {
+    const now = moment(new Date()).format('HH:mm:ss');
+
+    const timePicker = document.getElementById("timePicker");
+    timePicker.value = timePicker.max = now;
 }
 
 const handleRangeValueChange = (event) => {
@@ -48,11 +56,22 @@ const handleCircleMouseover = () => {
 }
 
 const handleLogGenderButtonPressed = () => {
-    const date = moment(document.getElementById("datePicker").value).format();
+    const datePicker = document.getElementById("datePicker");
+    const timePicker = document.getElementById("timePicker");
+
+    if (datePicker.value > datePicker.max || timePicker.value > timePicker.max) {
+        alert("Please choose an earlier date and/or time.");
+        return;
+    }
+
+    const date = moment(`${datePicker.value} ${timePicker.value}`).format();
     let entry = document.getElementById("logTextArea").value;
 
     localStorage.setItem(date, JSON.stringify({ color: getRgbaCode(), entry: entry }));
+
     setDatePicker();
+    setTimePicker();
+
     addCircle(date, getRgbaCode(), entry);
 }
 
@@ -97,6 +116,13 @@ const addCircle = (date, color, entry) => {
 
         circle.className = "circle historyCircle tooltip";
         circle.style.backgroundColor = color;
+
+        if (entry) {
+            const icon = document.createElement("i");
+            icon.className = "fas fa-book-open";
+            circle.append(icon);
+        }
+
         circle.onclick = circle.onmouseover = () => { 
             const historyEntryContainer = document.getElementById("historyEntryContainer");
             historyEntryContainer.innerHTML = '';
@@ -182,6 +208,8 @@ const addCircle = (date, color, entry) => {
 // TODO: Styling
 // TODO: Visual indicator that a circle has an entry for it?
 // TODO: Fix for FF and mobile
+// TODO: Mobile app?
+// TOOD: Edit entries
 const populateCirclesContainer = () => {
     const history = arrangeByDescendingDate(fetchHistory());
     history.forEach(h => { addCircle(h.date, h.color, h.entry) });
