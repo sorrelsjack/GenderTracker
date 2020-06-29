@@ -114,6 +114,7 @@ const handleClearHistoryPressed = () => {
     if (r) {
         localStorage.clear();
         document.getElementById("circlesContainer").innerHTML = '';
+        drawCharts();
     }
 }
 
@@ -273,8 +274,6 @@ const addCircle = (date, color, entry) => {
 // TODO: Favicon (Jane will do)
 // TODO: Styling
 // TODO: Fix for mobile
-// TODO: Mobile app?
-// TOOD: Edit entries
 const populateCirclesContainer = () => {
     const history = arrangeByDescendingDate(fetchHistory());
     history.forEach(h => { addCircle(h.date, h.color, h.entry) });

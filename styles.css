@@ -97,6 +97,10 @@ button {
     padding-bottom: 15pt;
     background-color: rgba(0, 0, 0, .1);
 }
+.genderChartsContainer {
+    padding-right: 20pt;
+    padding-left: 20pt;
+}
 .logSectionContainer {
     display: flex;
     width: 50%;
