@@ -52,6 +52,8 @@ button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding-left: 15pt;
+    padding-right: 15pt;
     padding-top: 15pt;
     padding-bottom: 15pt;
 }
@@ -84,7 +86,6 @@ button {
     flex-direction: column;
     text-align: center;
     width: 33.33%;
-    padding-top: 15pt;
     padding-bottom: 15pt;
 }
 .chartContainer {

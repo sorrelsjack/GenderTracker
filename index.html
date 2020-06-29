@@ -7,6 +7,7 @@
     <meta content="utf-8" http-equiv="encoding">
     <link rel="stylesheet" href="FontAwesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://unpkg.com/moment"></script>
     <script type="text/javascript" src="script.js"></script>
 </head>
@@ -55,8 +56,12 @@
                 <button onclick="handleLogGenderButtonPressed()">Log This Gender</button>
             </div>
         </div>
-        <div class="chartContainer">
-            <span>Coming Soon :)</span>
+        <div class="chartContainer" id="chartContainer">
+            <span>Frequency (In Percentage Felt)</span>
+            <canvas id="feminineChartCanvas"></canvas>
+            <canvas id="nonBinaryChartCanvas"></canvas>
+            <canvas id="masculineChartCanvas"></canvas>
+            <canvas id="senseOfGenderCanvas"></canvas>
         </div>
     </div>
 </body>

@@ -21,6 +21,7 @@ const initialize = () => {
     populateCirclesContainer();
     setDatePicker();
     setTimePicker();
+    drawCharts();
 }
 
 const setDatePicker = () => {
@@ -35,6 +36,71 @@ const setTimePicker = () => {
 
     const timePicker = document.getElementById("timePicker");
     timePicker.value = timePicker.max = now;
+}
+
+const drawCharts = () => {
+    const feminineCanvas = document.getElementById("feminineChartCanvas").getContext("2d");
+    const masculineCanvas = document.getElementById("masculineChartCanvas").getContext("2d");
+    const nonBinaryCanvas = document.getElementById("nonBinaryChartCanvas").getContext("2d");
+
+    const history = arrangeByDescendingDate(fetchHistory());
+    const colors = history.map(h => h.color);
+
+    Chart.defaults.global.defaultFontFamily = "Titillium";
+    Chart.defaults.global.defaultFontColor = "black";
+
+    const feminineChart = new Chart(feminineCanvas, {
+        type: 'line',
+        data: {
+            labels: history.map(h => moment(h.date).format('MMMM Do YYYY, h:mm A')),
+            datasets: [{
+                label: 'Feminine',
+                borderColor: 'rgba(255, 0, 0, .5)',
+                data: colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0]))
+            }]
+        }
+    })
+
+    const nonBinaryChart = new Chart(nonBinaryCanvas, {
+        type: 'line',
+        data: {
+            labels: history.map(h => moment(h.date).format('MMMM Do YYYY, h:mm A')),
+            datasets: [
+                {
+                    label: 'Non-Binary',
+                    borderColor: 'rgba(0, 255, 0, .5)',
+                    data: colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1]))
+                },
+            ]
+        }
+    })
+
+    const masculineChart = new Chart(masculineCanvas, {
+        type: 'line',
+        data: {
+            labels: history.map(h => moment(h.date).format('MMMM Do YYYY, h:mm A')),
+            datasets: [
+                {
+                    label: 'Masculine',
+                    borderColor: 'rgba(0, 0, 255, .5)',
+                    data: colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2]))
+                }]
+        }
+    })
+
+    const senseOfGenderChart = new Chart(senseOfGenderCanvas, {
+        type: 'line',
+        data: {
+            labels: history.map(h => moment(h.date).format('MMMM Do YYYY, h:mm A')),
+            datasets: [
+                {
+                    label: 'Sense of Gender',
+                    borderColor: 'rgba(0, 0, 0, .5)',
+
+                    data: colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3]))
+                }]
+        }
+    })
 }
 
 const handleRangeValueChange = (event) => {
@@ -73,6 +139,8 @@ const handleLogGenderButtonPressed = () => {
     setTimePicker();
 
     addCircle(date, getRgbaCode(), entry);
+
+    drawCharts();
 }
 
 const changeCircleColor = () => {
@@ -100,7 +168,7 @@ const fetchHistory = () => {
         keys = Object.keys(localStorage),
         i = keys.length;
 
-    while ( i-- ) {
+    while (i--) {
         if (!isNaN(Date.parse(keys[i]))) {
             const item = JSON.parse(localStorage.getItem(keys[i]));
             values.push({ date: keys[i], color: item.color, entry: item.entry });
@@ -123,7 +191,7 @@ const addCircle = (date, color, entry) => {
             circle.append(icon);
         }
 
-        circle.onclick = circle.onmouseover = () => { 
+        circle.onclick = circle.onmouseover = () => {
             const historyEntryContainer = document.getElementById("historyEntryContainer");
             historyEntryContainer.innerHTML = '';
 
@@ -146,11 +214,11 @@ const addCircle = (date, color, entry) => {
 
             historyEntryContainer.style.display = "block";
         }
-    
+
         const tooltip = document.createElement("span");
         tooltip.className = "tooltiptext";
         tooltip.append(getReadableDate(date));
-        
+
         const rgba = document.createElement("p");
         const rgbaText = document.createTextNode(color);
         rgba.appendChild(rgbaText);
@@ -202,7 +270,6 @@ const addCircle = (date, color, entry) => {
     circlesContainer.insertBefore(createCircle(date, color), circlesContainer.childNodes[index]);
 }
 
-// TODO: Chart
 // TODO: Favicon (Jane will do)
 // TODO: Styling
 // TODO: Fix for mobile
