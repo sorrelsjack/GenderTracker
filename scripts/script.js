@@ -19,23 +19,14 @@ let ranges = {
 const initialize = () => {
     restoreLastSavedState();
     populateCirclesContainer();
-    setDatePicker();
-    setTimePicker();
     drawCharts();
 }
 
-const setDatePicker = () => {
-    const now = moment(new Date()).format('yyyy-MM-DD');
+const setDateTimePicker = () => {
+    const now = moment(new Date()).format('YYYY-MM-DD hh:mm:ss A');
 
-    const datePicker = document.getElementById("datePicker");
-    datePicker.value = datePicker.max = now;
-}
-
-const setTimePicker = () => {
-    const now = moment(new Date()).format('HH:mm:ss');
-
-    const timePicker = document.getElementById("timePicker");
-    timePicker.value = timePicker.max = now;
+    const datePicker = document.getElementById("dateTimePicker");
+    datePicker.value = datePicker.maxDate = now;
 }
 
 const fetchHistory = () => {
@@ -53,7 +44,6 @@ const fetchHistory = () => {
     return values;
 }
 
-// TODO: Favicon (Jane will do)
 // TODO: Styling
 // TODO: Fix for mobile
 // TODO: Chart time period selector

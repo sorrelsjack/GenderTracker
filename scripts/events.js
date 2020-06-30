@@ -18,21 +18,19 @@ const handleCircleMouseover = () => {
 }
 
 const handleLogGenderButtonPressed = () => {
-    const datePicker = document.getElementById("datePicker");
-    const timePicker = document.getElementById("timePicker");
+    const datePicker = document.getElementById("dateTimePicker");
 
-    if (datePicker.value > datePicker.max || timePicker.value > timePicker.max) {
+    if (datePicker.value > datePicker.maxDate) {
         alert("Please choose an earlier date and/or time.");
         return;
     }
 
-    const date = moment(`${datePicker.value} ${timePicker.value}`).format();
+    const date = moment(`${datePicker.value}`).format();
     let entry = document.getElementById("logTextArea").value;
 
     localStorage.setItem(date, JSON.stringify({ color: getRgbaCode(), entry: entry }));
 
-    setDatePicker();
-    setTimePicker();
+    setDateTimePicker();
 
     addCircle(date, getRgbaCode(), entry);
 

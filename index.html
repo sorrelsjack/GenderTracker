@@ -6,10 +6,14 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <link rel="stylesheet" href="FontAwesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="https://unpkg.com/moment"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="scripts/datePicker.js"></script>
     <script type="text/javascript" src="scripts/events.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
     <script type="text/javascript" src="scripts/rgba.js"></script>
@@ -54,15 +58,15 @@
                 </div>
             </div>
             <div class="logSectionContainer">
-                <input type="date" id="datePicker"></input>
-                <input type="time" step="1" id="timePicker"></input>
+                <input type="text" name="dateTimePicker" id="dateTimePicker"></input>
                 <textarea class="logTextArea" rows="7" id="logTextArea"></textarea>
                 <button onclick="handleLogGenderButtonPressed()">Log This Gender</button>
             </div>
         </div>
         <div class="chartContainer" id="chartContainer">
             <span>Frequency (In Percentage Felt)</span>
-            <div class ="genderChartsContainer">
+            <input type="text" name="rangeDatePicker"/>
+            <div class="genderChartsContainer">
                 <canvas id="feminineChartCanvas"></canvas>
                 <canvas id="nonBinaryChartCanvas"></canvas>
                 <canvas id="masculineChartCanvas"></canvas>
@@ -71,4 +75,5 @@
         </div>
     </div>
 </body>
+
 </html>
