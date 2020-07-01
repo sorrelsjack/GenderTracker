@@ -25,7 +25,7 @@ const handleLogGenderButtonPressed = () => {
         return;
     }
 
-    const date = moment(`${datePicker.value}`).format();
+    const date = moment(`${datePicker.value}`, 'YYYY-MM-DD HH:mm:ss A', true).toISOString();
     let entry = document.getElementById("logTextArea").value;
 
     localStorage.setItem(date, JSON.stringify({ color: getRgbaCode(), entry: entry }));

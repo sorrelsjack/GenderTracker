@@ -48,6 +48,7 @@ const fetchHistory = () => {
 // TODO: Fix for mobile
 // TODO: Chart time period selector
 // TODO: 'During time period, you felt X way on average'
+// TODO: Better date validation
 
 const arrangeByDescendingDate = (history) => history.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 

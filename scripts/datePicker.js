@@ -1,7 +1,13 @@
 $(document).ready(() => {
     const history = arrangeByDescendingDate(fetchHistory());
-    const earliestDate = moment(history[history.length - 1].date).format('MM/DD/YYYY hh:mm:ss A');
-    const latestDate = moment(history[0].date).format('MM/DD/YYYY hh:mm:ss A');
+    const historyExists = history?.length > 0;
+
+    const dateFormat = 'YYYY-MM-DD';
+    const dateTimeFormat = 'YYYY-MM-DD hh:mm:ss A';
+
+    const now = moment().format(dateFormat);
+    const earliestDate = historyExists ? moment(history[history.length - 1].date).format(dateFormat) : now;
+    const latestDate = historyExists ? moment(history[0].date).format(dateFormat) : now;
 
     $('input[name="rangeDatePicker"]').daterangepicker({
         opens: 'center',
@@ -9,7 +15,10 @@ $(document).ready(() => {
         endDate: latestDate,
         minDate: earliestDate,
         maxDate: latestDate,
-        linkedCalendars: false
+        linkedCalendars: false,
+        locale: {
+            format: dateFormat
+        }
     }, () => { console.log('Date changed') })
 
     $('input[name="dateTimePicker"]').daterangepicker({
@@ -17,9 +26,9 @@ $(document).ready(() => {
         timePicker: true,
         timePickerSeconds: true,
         opens: 'center',
-        startDate: moment().format('MM/DD/YYYY hh:mm:ss A'),
+        startDate: moment().format(dateTimeFormat),
         locale: {
-            format: 'MM/DD/YYYY hh:mm:ss A'
+            format: dateTimeFormat
         }
     }, () => { console.log('Date changed') })
 })
