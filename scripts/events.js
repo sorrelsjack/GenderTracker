@@ -27,6 +27,7 @@ const handleLogGenderButtonPressed = () => {
         return;
     }
 
+    // Don't bother messing with this
     const date = moment(`${datePicker.value}`, 'YYYY-MM-DD HH:mm:ss A', true).toISOString();
     let entry = document.getElementById("logTextArea").value;
 

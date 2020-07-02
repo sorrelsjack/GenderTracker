@@ -16,7 +16,7 @@ const createLineChart = (element, label, color, data) => {
     return new Chart(element, {
         type: 'line',
         data: {
-            labels: history.map(h => moment(h.date).format('MMMM Do YYYY, h:mm A')),
+            labels: history.map(h => getSpelledOutDate(h.date)),
             datasets: [{
                 label: label,
                 borderColor: color,
@@ -58,7 +58,7 @@ const drawBarChart = (startDate, endDate) => {
         endDate = arrangeByDescendingDate(history)[0].date;
     }
 
-    const history = getFromDateRange(fetchHistory(), moment(startDate).format('YYYY-MM-DD'), moment(endDate).format('YYYY-MM-DD'));
+    const history = getFromDateRange(fetchHistory(), convertToISO(startDate), convertToISO(endDate));
     const colors = history.map(h => h.color);
 
     new Chart(barCanvas, {

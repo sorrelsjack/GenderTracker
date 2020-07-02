@@ -6,7 +6,7 @@ const initialize = () => {
 }
 
 const setDateTimePicker = () => {
-    const now = moment(new Date()).format('YYYY-MM-DD hh:mm:ss A');
+    const now = convertToISO(new Date(), true);
 
     const datePicker = document.getElementById("dateTimePicker");
     datePicker.value = datePicker.maxDate = now;
@@ -32,14 +32,6 @@ const fetchHistory = () => {
 // TODO: Better date validation
 
 const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
-
-const arrangeByDescendingDate = (history) => history.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-
-const arrangeByAscendingDate = (history) => history.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
-
-const getFromDateRange = (history, startDate, endDate) => history.filter(h => moment(h.date).format('YYYY-MM-DD') >= startDate && moment(h.date).format('YYYY-MM-DD') <= endDate);
-
-const getSpelledOutDate = (date) => `${moment(date).format('MMMM Do YYYY, h:mm A')}`
 
 const getMostRecentGender = () => arrangeByDescendingDate(fetchHistory())[0];
 
