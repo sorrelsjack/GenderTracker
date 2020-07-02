@@ -11,7 +11,6 @@ $(document).ready(() => {
 
     $('input[id="rangeDatePicker"]').daterangepicker({
         opens: 'center',
-        autoApply: true,
         startDate: earliestDate,
         endDate: latestDate,
         minDate: earliestDate,
@@ -27,7 +26,6 @@ $(document).ready(() => {
         timePicker: true,
         timePickerSeconds: true,
         opens: 'center',
-        autoApply: true,
         startDate: moment().format(dateTimeFormat),
         locale: {
             format: dateTimeFormat

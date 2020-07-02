@@ -29,7 +29,6 @@ const fetchHistory = () => {
 
 // TODO: Styling
 // TODO: Fix for mobile
-// TODO: 'During time period, you felt X way on average'
 // TODO: Better date validation
 
 const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);

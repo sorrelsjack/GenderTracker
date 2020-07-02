@@ -1,3 +1,6 @@
+Chart.defaults.global.defaultFontFamily = "Titillium";
+Chart.defaults.global.defaultFontColor = "black";
+
 const changeCircleColor = () => {
     document.getElementById("currentCircle").style.backgroundColor = getRgbaCode();
 }
