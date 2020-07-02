@@ -70,8 +70,18 @@ const drawBarChart = (startDate, endDate) => {
                 createBar('Non-Binary', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])))], 'rgba(0, 255, 0, .5)'),
                 createBar('Masculine', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])))], 'rgba(0, 0, 255, .5)'),
                 createBar('Sense of Gender', [calculateAverage(colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])))], 'rgba(0, 0, 0, .5)')
-            ]
+            ],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        suggestedMax: 100
+                    }
+                }]
+            }
+        }
     });
 }
 
