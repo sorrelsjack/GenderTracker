@@ -46,10 +46,16 @@ const drawLineCharts = () => {
     createLineChart(senseOfGenderCanvas, 'Sense of Gender', 'rgba(0, 0, 0, .5)', colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])));
 }
 
-const drawBarChart = (startDate = new Date(), endDate = new Date()) => {
+const drawBarChart = (startDate, endDate) => {
     const barCanvas = document.getElementById("barChartCanvas").getContext("2d");
 
-    const history = getFromDateRange(fetchHistory(), moment(startDate.toISOString()).format('YYYY-MM-DD'), moment(endDate.toISOString()).format('YYYY-MM-DD'));
+    if (!startDate || !endDate) {
+        const history = fetchHistory();
+        startDate = arrangeByAscendingDate(history)[0].date;
+        endDate = arrangeByDescendingDate(history)[0].date;
+    }
+
+    const history = getFromDateRange(fetchHistory(), moment(startDate).format('YYYY-MM-DD'), moment(endDate).format('YYYY-MM-DD'));
     const colors = history.map(h => h.color);
 
     new Chart(barCanvas, {

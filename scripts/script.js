@@ -32,7 +32,7 @@ const fetchHistory = () => {
 // TODO: 'During time period, you felt X way on average'
 // TODO: Better date validation
 
-const calculateAverage = (values) => values.reduce((a, b) => a + b, 0) / values.length;
+const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
 
 const arrangeByDescendingDate = (history) => history.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
