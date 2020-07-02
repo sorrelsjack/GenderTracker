@@ -2,7 +2,7 @@
     font-family: Titillium;
     src: url('Titillium_Web/TitilliumWeb-Regular.ttf') format('truetype');
 }
-html {
+* {
     font-family: Titillium;
 }
 body {
@@ -11,7 +11,6 @@ body {
     margin: auto;
 }
 button {
-    font-family: Titillium;
     border: none;
     background-color: black;
     color: white;
@@ -89,9 +88,6 @@ button {
     width: 33.33%;
     padding-bottom: 15pt;
 }
-.daterangepicker {
-    font-family: Titillium;
-}
 .chartContainer {
     display: flex;
     flex-direction: column;
@@ -100,6 +96,21 @@ button {
     padding-top: 15pt;
     padding-bottom: 15pt;
     background-color: rgba(0, 0, 0, .1);
+}
+.rangeDatePickerContainer {
+    padding-top: 10pt;
+    padding-bottom: 10pt;
+    display: flex;
+    flex-direction: column;
+}
+.rangeDatePicker {
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    box-sizing: border-box;
+}
+.rangeDatePickerTitle {
+    font-size: 13px;
 }
 .genderChartsContainer {
     padding-right: 20pt;
@@ -187,9 +198,6 @@ input[type=range]{
     cursor: pointer;
     background: rgb(175, 175, 175);
     border: 0.2px solid #010101;
-}
-input {
-    font-family: Titillium;
 }
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;

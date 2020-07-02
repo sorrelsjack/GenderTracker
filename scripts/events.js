@@ -9,7 +9,8 @@ const handleClearHistoryPressed = () => {
     if (r) {
         localStorage.clear();
         document.getElementById("circlesContainer").innerHTML = '';
-        drawCharts();
+        drawBarChart();
+        //drawLineCharts();
     }
 }
 
@@ -19,6 +20,7 @@ const handleCircleMouseover = () => {
 
 const handleLogGenderButtonPressed = () => {
     const datePicker = document.getElementById("dateTimePicker");
+    const rangeDatePicker = $('#rangeDatePicker').data('daterangepicker');
 
     if (datePicker.value > datePicker.maxDate) {
         alert("Please choose an earlier date and/or time.");
@@ -31,8 +33,10 @@ const handleLogGenderButtonPressed = () => {
     localStorage.setItem(date, JSON.stringify({ color: getRgbaCode(), entry: entry }));
 
     setDateTimePicker();
-
     addCircle(date, getRgbaCode(), entry);
 
-    drawCharts();
+    // TODO: Can we get minDate to update dynamically?
+    //if (date < moment(rangeDatePicker.startDate, 'YYYY-MM-DD HH:mm:ss A', true)) rangeDatePicker.minDate = date;
+    drawBarChart(rangeDatePicker.startDate, rangeDatePicker.endDate);
+    //drawLineCharts();
 }

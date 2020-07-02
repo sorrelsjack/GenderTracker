@@ -1,25 +1,8 @@
-const rangeIds = {
-    feminine: 'feminineRange',
-    nonBinary: 'nonBinaryRange',
-    masculine: 'masculineRange',
-    senseOfGender: 'senseOfGenderRange'
-}
-
-let ranges = {
-    // Red
-    [rangeIds.feminine]: 0,
-    // Green
-    [rangeIds.nonBinary]: 0,
-    // Blue
-    [rangeIds.masculine]: 0,
-    // Alpha
-    [rangeIds.senseOfGender]: 0
-}
-
 const initialize = () => {
     restoreLastSavedState();
     populateCirclesContainer();
-    drawCharts();
+    drawBarChart();
+    //drawLineCharts();
 }
 
 const setDateTimePicker = () => {
@@ -46,13 +29,18 @@ const fetchHistory = () => {
 
 // TODO: Styling
 // TODO: Fix for mobile
-// TODO: Chart time period selector
 // TODO: 'During time period, you felt X way on average'
 // TODO: Better date validation
 
+const calculateAverage = (values) => values.reduce((a, b) => a + b, 0) / values.length;
+
 const arrangeByDescendingDate = (history) => history.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
-const getReadableDate = (date) => `${moment(date).format('MMMM Do YYYY, h:mm A')}`
+const arrangeByAscendingDate = (history) => history.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+
+const getFromDateRange = (history, startDate, endDate) => history.filter(h => moment(h.date).format('YYYY-MM-DD') >= startDate && moment(h.date).format('YYYY-MM-DD') <= endDate);
+
+const getSpelledOutDate = (date) => `${moment(date).format('MMMM Do YYYY, h:mm A')}`
 
 const getMostRecentGender = () => arrangeByDescendingDate(fetchHistory())[0];
 
@@ -70,7 +58,6 @@ const restoreLastSavedState = () => {
     ranges[rangeIds.masculine] = percentFromRgbValue(rgba[2]);
     ranges[rangeIds.senseOfGender] = percentFromAlphaValue(rgba[3]);
 
-    //Object.values(rangeIds).forEach(r => { ranges[r] = percentFromRgbValue(rgba[rangeIds.indexOf(r)]) })
     Object.values(rangeIds).forEach(r => { document.getElementById(r).value = ranges[r] })
     changeCircleColor();
 }

@@ -2,11 +2,11 @@ const getRgbaCode = () => `rgba(${rgbValueFromPercent(ranges[rangeIds.feminine])
 
 const rgbValueFromPercent = (value) => Math.round((value / 100) * 255);
 
-const alphaValueFromPercent = (value) => (value / 100);
+const alphaValueFromPercent = (value) => value / 100;
 
 const percentFromRgbValue = (value) => Math.round((value * 100) / 255);
 
-const percentFromAlphaValue = (value) => (value * 100);
+const percentFromAlphaValue = (value) => Math.round(value * 100);
 
 const rgbaAsArray = (rgba) => rgba.substring(rgba.indexOf('(') + 1, rgba.lastIndexOf(')')).split(/,\s*/);
 

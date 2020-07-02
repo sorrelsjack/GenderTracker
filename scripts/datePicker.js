@@ -9,8 +9,9 @@ $(document).ready(() => {
     const earliestDate = historyExists ? moment(history[history.length - 1].date).format(dateFormat) : now;
     const latestDate = historyExists ? moment(history[0].date).format(dateFormat) : now;
 
-    $('input[name="rangeDatePicker"]').daterangepicker({
+    $('input[id="rangeDatePicker"]').daterangepicker({
         opens: 'center',
+        autoApply: true,
         startDate: earliestDate,
         endDate: latestDate,
         minDate: earliestDate,
@@ -19,13 +20,14 @@ $(document).ready(() => {
         locale: {
             format: dateFormat
         }
-    }, () => { console.log('Date changed') })
+    }, () => { drawBarChart(startDate, endDate) })
 
     $('input[name="dateTimePicker"]').daterangepicker({
         singleDatePicker: true,
         timePicker: true,
         timePickerSeconds: true,
         opens: 'center',
+        autoApply: true,
         startDate: moment().format(dateTimeFormat),
         locale: {
             format: dateTimeFormat

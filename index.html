@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="scripts/constants.js"></script>
     <script type="text/javascript" src="scripts/datePicker.js"></script>
     <script type="text/javascript" src="scripts/events.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
@@ -64,9 +65,13 @@
             </div>
         </div>
         <div class="chartContainer" id="chartContainer">
-            <span>Frequency (In Percentage Felt)</span>
-            <input type="text" name="rangeDatePicker"/>
+            <span>Average Gender Percentage</span>
+            <div class="rangeDatePickerContainer">
+                <span class="rangeDatePickerTitle">Timeframe</span>
+                <input class="rangeDatePicker" type="text" name="rangeDatePicker" id="rangeDatePicker"/>
+            </div>
             <div class="genderChartsContainer">
+                <canvas id="barChartCanvas"></canvas>
                 <canvas id="feminineChartCanvas"></canvas>
                 <canvas id="nonBinaryChartCanvas"></canvas>
                 <canvas id="masculineChartCanvas"></canvas>

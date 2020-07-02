@@ -7,8 +7,8 @@ const populateCirclesContainer = () => {
     history.forEach(h => { addCircle(h.date, h.color, h.entry) });
 }
 
-const createChart = (element, label, color, data) => {
-    const history = arrangeByDescendingDate(fetchHistory());
+const createLineChart = (element, label, color, data) => {
+    const history = arrangeByAscendingDate(fetchHistory());
 
     return new Chart(element, {
         type: 'line',
@@ -23,22 +23,47 @@ const createChart = (element, label, color, data) => {
     });
 }
 
-const drawCharts = () => {
-    Chart.defaults.global.defaultFontFamily = "Titillium";
-    Chart.defaults.global.defaultFontColor = "black";
-    
+const createBar = (label, data, color) => ({
+    label: label,
+    data: data,
+    backgroundColor: color,
+    borderColor: color,
+    borderWidth: 1
+})
+
+const drawLineCharts = () => {
     const feminineCanvas = document.getElementById("feminineChartCanvas").getContext("2d");
     const masculineCanvas = document.getElementById("masculineChartCanvas").getContext("2d");
     const nonBinaryCanvas = document.getElementById("nonBinaryChartCanvas").getContext("2d");
     const senseOfGenderCanvas = document.getElementById("senseOfGenderCanvas").getContext("2d");
 
-    const history = arrangeByDescendingDate(fetchHistory());
+    const history = arrangeByAscendingDate(fetchHistory());
     const colors = history.map(h => h.color);
 
-    const feminineChart = createChart(feminineCanvas, 'Feminine', 'rgba(255, 0, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0])));
-    const nonBinaryChart = createChart(nonBinaryCanvas, 'Non-Binary', 'rgba(0, 255, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])));
-    const masculineChart = createChart(masculineCanvas, 'Masculine', 'rgba(0, 0, 255, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])));
-    const senseOfGenderChart = createChart(senseOfGenderCanvas, 'Sense of Gender', 'rgba(0, 0, 0, .5)', colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])));
+    createLineChart(feminineCanvas, 'Feminine', 'rgba(255, 0, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0])));
+    createLineChart(nonBinaryCanvas, 'Non-Binary', 'rgba(0, 255, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])));
+    createLineChart(masculineCanvas, 'Masculine', 'rgba(0, 0, 255, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])));
+    createLineChart(senseOfGenderCanvas, 'Sense of Gender', 'rgba(0, 0, 0, .5)', colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])));
+}
+
+const drawBarChart = (startDate = new Date(), endDate = new Date()) => {
+    const barCanvas = document.getElementById("barChartCanvas").getContext("2d");
+
+    const history = getFromDateRange(fetchHistory(), moment(startDate.toISOString()).format('YYYY-MM-DD'), moment(endDate.toISOString()).format('YYYY-MM-DD'));
+    const colors = history.map(h => h.color);
+
+    new Chart(barCanvas, {
+        type: 'bar',
+        data: {
+            labels: ['Percentage'],
+            datasets: [
+                createBar('Feminine', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0])))], 'rgba(255, 0, 0, .5)'), 
+                createBar('Non-Binary', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])))], 'rgba(0, 255, 0, .5)'),
+                createBar('Masculine', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])))], 'rgba(0, 0, 255, .5)'),
+                createBar('Sense of Gender', [calculateAverage(colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])))], 'rgba(0, 0, 0, .5)')
+            ]
+        },
+    });
 }
 
 const addCircle = (date, color, entry) => {
@@ -64,7 +89,7 @@ const addCircle = (date, color, entry) => {
             }
 
             const entryHeader = document.createElement("div");
-            const entryTitleText = document.createTextNode(getReadableDate(date));
+            const entryTitleText = document.createTextNode(getSpelledOutDate(date));
             entryHeader.appendChild(entryTitleText);
 
             const entryBody = document.createElement("div");
@@ -80,7 +105,7 @@ const addCircle = (date, color, entry) => {
 
         const tooltip = document.createElement("span");
         tooltip.className = "tooltiptext";
-        tooltip.append(getReadableDate(date));
+        tooltip.append(getSpelledOutDate(date));
 
         const rgba = document.createElement("p");
         const rgbaText = document.createTextNode(color);
