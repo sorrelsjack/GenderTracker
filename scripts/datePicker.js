@@ -19,7 +19,7 @@ $(document).ready(() => {
         locale: {
             format: dateFormat
         }
-    }, () => { drawBarChart(startDate, endDate) })
+    }, (startDate, endDate) => { drawBarChart(startDate, endDate) })
 
     $('input[name="dateTimePicker"]').daterangepicker({
         singleDatePicker: true,
