@@ -73,11 +73,20 @@ const drawBarChart = (startDate, endDate) => {
             ],
         },
         options: {
+            tooltips: {
+                callbacks: {
+                    label: (tooltipItem, data) => {
+                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                        return `${label}: ${tooltipItem.yLabel}%`;
+                    }
+                }
+            },
             scales: {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        suggestedMax: 100
+                        suggestedMax: 100,
+                        callback: (value, index, values) => `${value}%`
                     }
                 }]
             }
