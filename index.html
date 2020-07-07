@@ -24,6 +24,7 @@
 </head>
 
 <body onload="initialize()">
+    <div id="navPlaceholder"></div>
     <div class="title">
         Gender Diary
     </div>
@@ -37,22 +38,22 @@
         <div class="mainContainer">
             <div>
                 <p class="genderLabel">Feminine</p>
-                <input class="feminineRange" type="range" min="0" max="100" value="0" class="slider"
+                <input type="range" min="0" max="100" value="0" class="slider"
                     onchange="handleRangeValueChange(event)" id="feminineRange">
             </div>
             <div>
                 <p class="genderLabel">Non-Binary</p>
-                <input class="nonBinaryRange" type="range" min="0" max="100" value="0" class="slider"
+                <input type="range" min="0" max="100" value="0" class="slider"
                     onchange="handleRangeValueChange(event)" id="nonBinaryRange">
             </div>
             <div>
                 <p class="genderLabel">Masculine</p>
-                <input class="masculineRange" type="range" min="0" max="100" value="0" class="slider"
+                <input type="range" min="0" max="100" value="0" class="slider"
                     onchange="handleRangeValueChange(event)" id="masculineRange">
             </div>
             <div>
                 <p class="genderLabel">Sense of Gender</p>
-                <input class="senseOfGenderRange" type="range" min="0" max="100" value="0" class="slider"
+                <input type="range" min="0" max="100" value="0" class="slider"
                     onchange="handleRangeValueChange(event)" id="senseOfGenderRange">
             </div>
             <div class="currentCircleContainer" onmouseover="handleCircleMouseover()">

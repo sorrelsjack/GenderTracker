@@ -49,8 +49,8 @@ const drawBarChart = (startDate, endDate) => {
 
     if (!startDate || !endDate) {
         const history = fetchHistory();
-        startDate = arrangeByAscendingDate(history)[0].date;
-        endDate = arrangeByDescendingDate(history)[0].date;
+        startDate = arrangeByAscendingDate(history)[0]?.date;
+        endDate = arrangeByDescendingDate(history)[0]?.date;
     }
 
     const history = getFromDateRange(fetchHistory(), convertToISO(startDate), convertToISO(endDate));
