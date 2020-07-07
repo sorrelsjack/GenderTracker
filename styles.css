@@ -207,12 +207,17 @@ input[type=range]{
     -webkit-appearance: none;
     position: relative;
     overflow: hidden;
-    height: 20px;
+    height: 12px;
     width: 200px;
     cursor: pointer;
-    border-radius: 0; /* iOS */
+    border-radius: 15px;
+}
+input[type=range]:focus {
+    outline: none;
 }
 ::-webkit-slider-runnable-track {
+    height: 12px;
+    border-radius: 15px;
     background: rgb(175, 175, 175);
 }
 ::-moz-range-track {
@@ -224,40 +229,48 @@ input[type=range]{
 }
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
     background: #fff;
-    border: 2px solid #999;
 }
 input[type=range]::-moz-range-thumb {
     border: 2px solid #999;
-    width: 18px;
-    height: 18px;
+    width: 10px;
+    height: 10px;
     background: #ffffff;
-    border-radius: 0px;
+    border-radius: 15px;
     cursor: pointer;
 }
 input[id=feminineRange]::-webkit-slider-thumb {
     box-shadow: -100vw 0 0 100vw #ff0000;
+    background-color: #ff0000;
 }
 input[id=feminineRange]::-moz-range-thumb {
     box-shadow: -100vw 0 0 100vw #ff0000;
+    background-color: #ff0000;
 }
 input[id=masculineRange]::-webkit-slider-thumb {
     box-shadow: -100vw 0 0 100vw #0000ff;
+    background-color: #0000ff;
 }
 input[id=masculineRange]::-moz-range-thumb {
     box-shadow: -100vw 0 0 100vw #0000ff;
+    background-color: #0000ff;
 }
 input[id=nonBinaryRange]::-webkit-slider-thumb {
     box-shadow: -100vw 0 0 100vw #00ff00;
+    background-color: #00ff00;
 }
 input[id=nonBinaryRange]::-moz-range-thumb {
     box-shadow: -100vw 0 0 100vw #00ff00;
+    background-color: #00ff00;
 }
 input[id=senseOfGenderRange]::-webkit-slider-thumb {
     box-shadow: -100vw 0 0 100vw #777777;
+    background-color: #777777;
 }
 input[id=senseOfGenderRange]::-moz-range-thumb {
     box-shadow: -100vw 0 0 100vw #777777;
+    background-color: #777777;
 }
