@@ -29,18 +29,18 @@ const fetchHistory = () => {
 
 // TODO: Styling
 // TODO: Fix for mobile
-// TODO: Better date validation
+// TODO: Pronoun selection?
 
 const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
 
 const getMostRecentGender = () => arrangeByDescendingDate(fetchHistory())[0];
 
 const restoreLastSavedState = () => {
+    const setRangeValues = () =>  Object.values(rangeIds).forEach(r => { document.getElementById(r).value = ranges[r] });
+
     const genderColor = getMostRecentGender()?.color;
-    if (!genderColor) {
-        Object.values(rangeIds).forEach(r => { document.getElementById(r).value = 0 });
-        return;
-    }
+
+    if (!genderColor) return Object.values(rangeIds).forEach(r => { document.getElementById(r).value = 0 });
 
     const rgba = rgbaAsArray(genderColor);
 
@@ -49,6 +49,6 @@ const restoreLastSavedState = () => {
     ranges[rangeIds.masculine] = percentFromRgbValue(rgba[2]);
     ranges[rangeIds.senseOfGender] = percentFromAlphaValue(rgba[3]);
 
-    Object.values(rangeIds).forEach(r => { document.getElementById(r).value = ranges[r] })
+    setRangeValues();
     changeCircleColor();
 }

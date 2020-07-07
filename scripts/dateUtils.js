@@ -4,6 +4,6 @@ const arrangeByAscendingDate = (history) => history.sort((a, b) => Date.parse(a.
 
 const getFromDateRange = (history, startDate, endDate) => history.filter(h => convertToISO(h.date) >= startDate && convertToISO(h.date) <= endDate);
 
-const getSpelledOutDate = (date) => `${moment(date).format('MMMM Do YYYY, h:mm A')}`
+const getSpelledOutDate = (date) => `${moment(date).format('MMMM Do YYYY, hh:mm:ss A')}`
 
 const convertToISO = (date, includeTime = false) => moment(date).format(`YYYY-MM-DD${includeTime ? ' hh:mm:ss A' : ''}`);
