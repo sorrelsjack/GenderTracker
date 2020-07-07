@@ -6,7 +6,7 @@ let barChart = null;
 const createLineChart = (element, label, color, data) => {
     const history = arrangeByAscendingDate(fetchHistory());
 
-    return new Chart(element, {
+    new Chart(element, {
         type: 'line',
         data: {
             labels: history.map(h => getSpelledOutDate(h.date)),
@@ -33,6 +33,8 @@ const drawLineCharts = () => {
     const nonBinaryCanvas = document.getElementById("nonBinaryChartCanvas").getContext("2d");
     const senseOfGenderCanvas = document.getElementById("senseOfGenderCanvas").getContext("2d");
 
+    $('.lineChartCanvas').css('display', 'block');
+
     const history = arrangeByAscendingDate(fetchHistory());
     const colors = history.map(h => h.color);
 
@@ -40,9 +42,16 @@ const drawLineCharts = () => {
     createLineChart(nonBinaryCanvas, 'Non-Binary', 'rgba(0, 255, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])));
     createLineChart(masculineCanvas, 'Masculine', 'rgba(0, 0, 255, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])));
     createLineChart(senseOfGenderCanvas, 'Sense of Gender', 'rgba(0, 0, 0, .5)', colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])));
+
+    document.getElementById("barChartCanvas").style.display = "none";
 }
 
 const drawBarChart = (startDate, endDate) => {
+    document.getElementById("feminineChartCanvas").style.display = "none";
+    document.getElementById("masculineChartCanvas").style.display = "none";
+    document.getElementById("nonBinaryChartCanvas").style.display = "none";
+    document.getElementById("senseOfGenderCanvas").style.display = "none";
+
     // Destroy existing chart to avoid render issues
     barChart?.destroy();
     const barCanvas = document.getElementById("barChartCanvas").getContext("2d");

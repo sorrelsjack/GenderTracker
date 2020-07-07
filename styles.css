@@ -117,28 +117,34 @@ button {
     flex-direction: column;
     text-align: center;
     width: 33.33%;
+    height: 100%;
     padding-top: 15pt;
     padding-bottom: 15pt;
     background-color: rgba(0, 0, 0, .1);
 }
-.rangeDatePickerContainer {
+.lineChartCanvas {
+    display: none;
+}
+.chartPickerContainer {
     padding-top: 10pt;
-    padding-bottom: 10pt;
     display: flex;
     flex-direction: column;
 }
-.rangeDatePicker {
+.chartPickerTitle {
+    font-size: 13px;
+}
+.chartPicker {
     margin: auto;
     text-align: center;
     width: 50%;
     box-sizing: border-box;
 }
-.rangeDatePickerTitle {
-    font-size: 13px;
-}
 .genderChartsContainer {
     padding-right: 20pt;
     padding-left: 20pt;
+}
+.genderChartsContainer canvas {
+    padding-top: 20px;
 }
 .logSectionContainer {
     display: flex;
@@ -210,7 +216,7 @@ input[type=range]{
     -webkit-appearance: none;
     position: relative;
     overflow: hidden;
-    height: 12px;
+    height: 14px;
     width: 200px;
     cursor: pointer;
     border-radius: 15px;
@@ -219,28 +225,28 @@ input[type=range]:focus {
     outline: none;
 }
 ::-webkit-slider-runnable-track {
-    height: 12px;
+    height: 14px;
     border-radius: 15px;
     background: rgb(175, 175, 175);
 }
 ::-moz-range-track {
     width: 100%;
-    height: 20px;
+    height: 22px;
     cursor: pointer;
     background: rgb(175, 175, 175);
     border: 0.2px solid #010101;
 }
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 15px;
     background: #fff;
 }
 input[type=range]::-moz-range-thumb {
-    border: 2px solid #999;
-    width: 10px;
-    height: 10px;
+    border: transparent;
+    width: 12px;
+    height: 12px;
     background: #ffffff;
     border-radius: 15px;
     cursor: pointer;

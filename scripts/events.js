@@ -41,3 +41,16 @@ const handleLogGenderButtonPressed = () => {
     drawBarChart(rangeDatePicker.startDate, rangeDatePicker.endDate);
     //drawLineCharts();
 }
+
+handleChartTypeOptionChange = (event) => {
+    console.log('Coming soon!');
+    /*const types = {
+        bar: 'bar',
+        line: 'line'
+    }
+    
+    const { value } = event.target;
+
+    if (value === types.bar) drawBarChart();
+    if (value === types.line) drawLineCharts();*/
+}

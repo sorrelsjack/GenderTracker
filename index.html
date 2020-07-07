@@ -38,23 +38,23 @@
         <div class="mainContainer">
             <div>
                 <p class="genderLabel">Feminine</p>
-                <input type="range" min="0" max="100" value="0" class="slider"
-                    onchange="handleRangeValueChange(event)" id="feminineRange">
+                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
+                    id="feminineRange">
             </div>
             <div>
                 <p class="genderLabel">Non-Binary</p>
-                <input type="range" min="0" max="100" value="0" class="slider"
-                    onchange="handleRangeValueChange(event)" id="nonBinaryRange">
+                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
+                    id="nonBinaryRange">
             </div>
             <div>
                 <p class="genderLabel">Masculine</p>
-                <input type="range" min="0" max="100" value="0" class="slider"
-                    onchange="handleRangeValueChange(event)" id="masculineRange">
+                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
+                    id="masculineRange">
             </div>
             <div>
                 <p class="genderLabel">Sense of Gender</p>
-                <input type="range" min="0" max="100" value="0" class="slider"
-                    onchange="handleRangeValueChange(event)" id="senseOfGenderRange">
+                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
+                    id="senseOfGenderRange">
             </div>
             <div class="currentCircleContainer" onmouseover="handleCircleMouseover()">
                 <div class="circle tooltip" id="currentCircle">
@@ -69,16 +69,23 @@
         </div>
         <div class="chartContainer" id="chartContainer">
             <span>Average Gender Percentage</span>
-            <div class="rangeDatePickerContainer">
-                <span class="rangeDatePickerTitle">Timeframe</span>
-                <input class="rangeDatePicker" type="text" name="rangeDatePicker" id="rangeDatePicker" readonly/>
+            <div class="chartPickerContainer">
+                <span class="chartPickerTitle">Timeframe</span>
+                <input class="chartPicker" type="text" name="rangeDatePicker" id="rangeDatePicker" readonly />
+            </div>
+            <div class="chartPickerContainer">
+                <span class="chartPickerTitle">Chart Type (WIP)</span>
+                <select class="chartPicker" onchange="handleChartTypeOptionChange(event)" id="chartTypePicker">
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                </select>
             </div>
             <div class="genderChartsContainer">
-                <canvas id="barChartCanvas"></canvas>
-                <canvas id="feminineChartCanvas"></canvas>
-                <canvas id="nonBinaryChartCanvas"></canvas>
-                <canvas id="masculineChartCanvas"></canvas>
-                <canvas id="senseOfGenderCanvas"></canvas>
+                <canvas id="barChartCanvas" height="200"></canvas>
+                <canvas class="lineChartCanvas" id="feminineChartCanvas"></canvas>
+                <canvas class="lineChartCanvas" id="nonBinaryChartCanvas"></canvas>
+                <canvas class="lineChartCanvas" id="masculineChartCanvas"></canvas>
+                <canvas class="lineChartCanvas" id="senseOfGenderCanvas"></canvas>
             </div>
         </div>
     </div>
