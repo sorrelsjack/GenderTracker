@@ -52,6 +52,9 @@ button {
     display: flex;
     flex-direction: row;
 }
+.aboutContainer {
+    background-color: magenta;
+}
 .historyContainer {
     height: fit-content;
     display: flex;
