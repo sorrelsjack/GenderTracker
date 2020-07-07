@@ -2,7 +2,7 @@ const initialize = () => {
     restoreLastSavedState();
     populateCirclesContainer();
     drawBarChart();
-    setNavBar();
+    //setNavBar();
     //drawLineCharts();
 }
 
