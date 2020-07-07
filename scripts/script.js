@@ -2,12 +2,7 @@ const initialize = () => {
     restoreLastSavedState();
     populateCirclesContainer();
     drawBarChart();
-    //setNavBar();
     //drawLineCharts();
-}
-
-const setNavBar = () => {
-    $("#navPlaceholder").load("html/nav.html");
 }
 
 const setDateTimePicker = () => {

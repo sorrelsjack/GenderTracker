@@ -14,20 +14,20 @@ body {
 .nav {
     width: 100%;
     background-color: black;
-}
-.nav ul {
-    list-style-type: none;
     overflow: hidden;
 }
-.nav li {
+.nav a {
     float: left;
-}
-.nav li a {
-    display: block;
     color: white;
-    text-align: center;
-    padding: 16px;
+    padding: 18px 0;
     text-decoration: none;
+    font-size: 16px;
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+.nav a:hover {
+    background-color: grey;
 }
 button {
     border: none;
