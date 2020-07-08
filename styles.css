@@ -12,7 +12,7 @@ body {
     height: 100%;
 }
 .fullHeight {
-    height: 100vh;
+    height: calc(100vh - 96px);
 }
 a {
     text-decoration: none;
@@ -82,9 +82,12 @@ button {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 }
 .personInfoContainer {
-    width: 85%;
+    flex: 1;
+    width: 90%;
+    height: 100%;
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
@@ -95,12 +98,14 @@ button {
     font-size: 13pt;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     padding: 30px;
     margin-right: 30px;
 }
 .personPictureContainer {
-    height: 250px;
-    width: 250px;
+    height: 100%;
+    width: 20%;
     margin-left: 30px;
     background-color: black;
 }
@@ -334,5 +339,4 @@ input[id=senseOfGenderRange]::-moz-range-thumb {
 }
 .footer {
     text-align: center;
-    padding: 20px 0px;
 }
