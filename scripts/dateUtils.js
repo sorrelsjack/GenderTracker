@@ -2,7 +2,10 @@ const arrangeByDescendingDate = (history) => history.sort((a, b) => Date.parse(b
 
 const arrangeByAscendingDate = (history) => history.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
-const getFromDateRange = (history, startDate, endDate) => history.filter(h => convertToISO(h.date) >= startDate && convertToISO(h.date) <= endDate);
+// Convert to a standardized ISO string and then parse it into a numerical value, which will be what is ultimately compared
+const existsInDateRange = (date, startDate, endDate) => Date.parse(convertToISO(date)) >= Date.parse(startDate) && Date.parse(convertToISO(date)) <= Date.parse(endDate);
+
+const getFromDateRange = (history, startDate, endDate) => history.filter(h => existsInDateRange(h.date, startDate, endDate));
 
 const getSpelledOutDate = (date) => `${moment(date).format('MMMM Do YYYY, hh:mm:ss A')}`
 

@@ -1,0 +1,3 @@
+const storageKeys = {
+    customPronouns: 'customPronouns'
+}
