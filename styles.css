@@ -11,6 +11,12 @@ body {
     margin: 0;
     height: 100%;
 }
+.fullHeight {
+    height: 100vh;
+}
+a {
+    text-decoration: none;
+}
 .nav {
     width: 100%;
     background-color: black;
@@ -28,6 +34,25 @@ body {
 }
 .nav a:hover {
     background-color: grey;
+}
+.speech-bubble {
+	position: relative;
+    background: rgba(0, 0, 0, .1);
+	border-radius: .4em;
+}
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: rgba(0, 0, 0, .1);
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-right: -20px;
 }
 button {
     border: none;
@@ -53,20 +78,30 @@ button {
     flex-direction: row;
 }
 .aboutContainer {
+    height: 100%;
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    background-color: magenta;
 }
 .personInfoContainer {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    width: 85%;
     display: flex;
+    justify-content: flex-end;
     flex-direction: row;
     margin: 0 auto;
+    padding-bottom: 50px;
+}
+.personInfo {
+    font-size: 13pt;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    margin-right: 30px;
 }
 .personPictureContainer {
-    height: 100px;
-    width: 100px;
+    height: 250px;
+    width: 250px;
+    margin-left: 30px;
     background-color: black;
 }
 .historyContainer {
@@ -296,4 +331,8 @@ input[id=senseOfGenderRange]::-webkit-slider-thumb {
 input[id=senseOfGenderRange]::-moz-range-thumb {
     box-shadow: -100vw 0 0 100vw #777777;
     background-color: #777777;
+}
+.footer {
+    text-align: center;
+    padding: 20px 0px;
 }
