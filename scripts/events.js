@@ -1,7 +1,7 @@
 const handleRangeValueChange = (event) => {
     const { id, value } = event.target;
     ranges[id] = value;
-    changeCircleColor();
+    changeCurrentCircleColor();
 }
 
 const handleClearHistoryPressed = () => {
@@ -14,9 +14,10 @@ const handleClearHistoryPressed = () => {
     }
 }
 
-const handleCircleMouseover = () => {
-    document.getElementById("tooltipText").textContent = `${getRgbaCode()}`;
-}
+const handleCurrentCircleInteraction = () => document.getElementById("tooltipText").textContent = getRangeRgbaCode();
+
+// TODO Deal with the case where it could be a line graph too
+const handleChartCircleInteraction = () => document.getElementById("largeCircleTooltipText").textContent = getBarRgbaCode();
 
 const handleLogGenderButtonPressed = () => {
     const datePicker = document.getElementById("dateTimePicker");
@@ -31,10 +32,10 @@ const handleLogGenderButtonPressed = () => {
     const date = moment(`${datePicker.value}`, 'YYYY-MM-DD HH:mm:ss A', true).toISOString();
     let entry = document.getElementById("logTextArea").value;
 
-    localStorage.setItem(date, JSON.stringify({ color: getRgbaCode(), entry: entry }));
+    localStorage.setItem(date, JSON.stringify({ color: getRangeRgbaCode(), entry: entry }));
 
     setDateTimePicker();
-    addCircle(date, getRgbaCode(), entry);
+    addCircle(date, getRangeRgbaCode(), entry);
 
     const { startDate, endDate } = rangeDatePicker;
 

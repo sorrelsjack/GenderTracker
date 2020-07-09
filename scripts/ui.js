@@ -1,6 +1,6 @@
-const changeCircleColor = () => {
-    document.getElementById("currentCircle").style.backgroundColor = getRgbaCode();
-}
+const changeCurrentCircleColor = () => document.getElementById("currentCircle").style.backgroundColor = getRangeRgbaCode();
+
+const changeLargeCircleColor = () => document.getElementById("largeCircle").style.backgroundColor = getBarRgbaCode();
 
 const populateCirclesContainer = () => {
     const history = arrangeByDescendingDate(fetchHistory());

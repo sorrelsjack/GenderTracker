@@ -1,8 +1,12 @@
-const getRgbaCode = () => `rgba(${rgbValueFromPercent(ranges[rangeIds.feminine])}, ${rgbValueFromPercent(ranges[rangeIds.nonBinary])}, ${rgbValueFromPercent(ranges[rangeIds.masculine])}, ${alphaValueFromPercent(ranges[rangeIds.senseOfGender])})`;
+const getRgbaCode = (values) => `rgba(${rgbValueFromPercent(values[0])}, ${rgbValueFromPercent(values[1])}, ${rgbValueFromPercent(values[2])}, ${alphaValueFromPercent(values[3])})`;
+
+const getRangeRgbaCode = () => getRgbaCode(Object.values(ranges));
+
+const getBarRgbaCode = () => getRgbaCode(Object.values(bars));
 
 const rgbValueFromPercent = (value) => Math.round((value / 100) * 255);
 
-const alphaValueFromPercent = (value) => value / 100;
+const alphaValueFromPercent = (value, decimalPlaces = 2) => parseFloat(value / 100).toFixed(decimalPlaces);
 
 const percentFromRgbValue = (value) => Math.round((value * 100) / 255);
 

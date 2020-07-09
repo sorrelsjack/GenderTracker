@@ -27,6 +27,7 @@ $(document).ready(() => {
         timePickerSeconds: true,
         opens: 'center',
         startDate: moment().format(dateTimeFormat),
+        maxDate: moment().format(dateTimeFormat),
         locale: {
             format: dateTimeFormat
         }

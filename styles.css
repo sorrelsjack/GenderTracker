@@ -210,6 +210,13 @@ button {
     resize: none;
     margin-bottom: 15pt;
 }
+.largeCircle {
+    height: 100px;
+    width: 100px;
+    background-color: #00000000;
+    border-radius: 50%;
+    display: inline-block;
+}
 .circle {
     height: 50px;
     width: 50px;
@@ -217,7 +224,7 @@ button {
     border-radius: 50%;
     display: inline-block;
 }
-.currentCircleContainer {
+.mainCircleContainer {
     margin-top: 20pt;
     margin-bottom: 20pt;
 }

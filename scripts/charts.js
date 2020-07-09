@@ -65,15 +65,24 @@ const drawBarChart = (startDate, endDate) => {
     const history = getFromDateRange(fetchHistory(), convertToISO(startDate), convertToISO(endDate));
     const colors = history.map(h => h.color);
 
+    const percents = {
+        feminine: calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0]))),
+        nonBinary: calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1]))),
+        masculine: calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2]))),
+        senseOfGender: calculateAverage(colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])))
+    }
+
+    bars = percents;
+
     barChart = new Chart(barCanvas, {
         type: 'bar',
         data: {
             labels: ['Percentage'],
             datasets: [
-                createBar('Feminine', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0])))], 'rgba(255, 0, 0, .5)'), 
-                createBar('Non-Binary', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])))], 'rgba(0, 255, 0, .5)'),
-                createBar('Masculine', [calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])))], 'rgba(0, 0, 255, .5)'),
-                createBar('Sense of Gender', [calculateAverage(colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])))], 'rgba(0, 0, 0, .5)')
+                createBar('Feminine', [percents.feminine], 'rgba(255, 0, 0, .5)'), 
+                createBar('Non-Binary', [percents.nonBinary], 'rgba(0, 255, 0, .5)'),
+                createBar('Masculine', [percents.masculine], 'rgba(0, 0, 255, .5)'),
+                createBar('Sense of Gender', [percents.senseOfGender], 'rgba(0, 0, 0, .5)')
             ],
         },
         options: {
@@ -96,4 +105,6 @@ const drawBarChart = (startDate, endDate) => {
             }
         }
     });
+
+    changeLargeCircleColor();
 }

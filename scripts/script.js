@@ -32,6 +32,7 @@ const fetchHistory = () => {
 // TODO: Styling
 // TODO: Fix for mobile
 // TODO: Pronoun selection?
+// TODO: Fix bug where you can enter the same time stamp twice and it will show up twice in the history box but will not actually be recorded
 
 const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
 
@@ -52,5 +53,5 @@ const restoreLastSavedState = () => {
     ranges[rangeIds.senseOfGender] = percentFromAlphaValue(rgba[3]);
 
     setRangeValues();
-    changeCircleColor();
+    changeCurrentCircleColor();
 }

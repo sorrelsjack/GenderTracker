@@ -15,3 +15,10 @@ let ranges = {
     // Alpha
     [rangeIds.senseOfGender]: 0
 }
+
+let bars = {
+    feminine: 0,
+    nonBinary: 0,
+    masculine: 0,
+    senseOfGender: 0
+}
