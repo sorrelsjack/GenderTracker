@@ -41,9 +41,6 @@ const handleLogGenderButtonPressed = () => {
 
     // TODO: Can we get minDate to update dynamically?
     //if (date < moment(rangeDatePicker.startDate, 'YYYY-MM-DD HH:mm:ss A', true)) rangeDatePicker.minDate = date;
-    console.log(date)
-    console.log(startDate)
-    console.log(endDate)
     if (existsInDateRange(date, startDate, endDate)) drawBarChart(startDate, endDate);
     //drawLineCharts();
 }
