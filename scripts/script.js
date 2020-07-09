@@ -30,9 +30,11 @@ const fetchHistory = () => {
 }
 
 // TODO: Styling
-// TODO: Fix for mobile
 // TODO: Pronoun selection?
 // TODO: Fix bug where you can enter the same time stamp twice and it will show up twice in the history box but will not actually be recorded
+// TODO: Change the tooltip theme based on how light or dark a color is
+// TODO: Would titles be cool? (ms, mr, mx)
+// TODO: Attachments to form
 
 const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
 

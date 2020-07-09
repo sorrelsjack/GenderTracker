@@ -10,10 +10,33 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="fullHeight wrapper">
     <object name="navBar" type="text/html" width="100%" height="60px" data="nav.html"></object>
     <div class="title">
         Contact
     </div>
+    <div class="contactContainer">
+        <div class="placeholderBox"></div>
+        <div class="speech-bubble right contactFormContainer">
+            <div>
+                Etiam cursus quis felis quis ullamcorper. Fusce porta libero ligula, ut mattis arcu hendrerit ac.
+                Phasellus non volutpat metus. Donec felis mauris, commodo et odio at, fermentum tempus nunc. Phasellus
+                id interdum metus. Vivamus varius sodales nulla at iaculis. Aenean ut quam scelerisque ipsum faucibus
+                fringilla in eget nulla. Morbi vitae felis dolor. Suspendisse dapibus ullamcorper diam, ut ultrices orci
+                malesuada a. Sed tincidunt eleifend neque id aliquet. Sed et mi odio.
+            </div>
+            <form class="contactForm">
+                <label for="nameInput">Name</label>
+                <input type="text" id="nameInput"></input>
+                <label for="emailInput">Email</label>
+                <input type="text" id="emailInput"></input>
+                <label for="subjectInput">Subject</label>
+                <input type="text" id="subjectInput"></input>
+                <label for="messageInput">Message</label>
+                <textarea id="messageInput"></textarea>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>

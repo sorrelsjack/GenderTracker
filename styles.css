@@ -54,6 +54,20 @@ a {
 	margin-top: -10px;
 	margin-right: -20px;
 }
+.speech-bubble.right:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: rgba(0, 0, 0, .1);;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
 button {
     border: none;
     background-color: black;
@@ -68,16 +82,16 @@ button {
     text-align: center;
     font-size: 30px;
     margin-bottom: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
-.wrapper {
+.indexContainer {
     width: 96%;
     margin: auto;
     height: 100%;
     display: flex;
     flex-direction: row;
 }
-.aboutContainer {
+.wrapper {
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -106,6 +120,38 @@ button {
     height: 15vw;
     background-size: cover;
     margin-left: 30px;
+    background-color: black;
+}
+.contactContainer {
+    display: flex;
+    margin: auto;
+    height: 100%;
+    overflow: auto;
+    width: 50%;
+    flex-direction: row;
+}
+.contactFormContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-left: 30px;
+    width: 50%;
+}
+.contactForm {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.contactForm label {
+    padding: 10px;
+}
+.contactForm textarea {
+    height: 100%;
+    box-sizing: border-box;
+}
+.placeholderBox {
+    height: 100%;
+    width: 50%;
     background-color: black;
 }
 .historyContainer {
