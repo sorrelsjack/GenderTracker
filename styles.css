@@ -78,34 +78,34 @@ button {
     flex-direction: row;
 }
 .aboutContainer {
-    height: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
 }
 .personInfoContainer {
     flex: 1;
     width: 90%;
-    height: 100%;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     flex-direction: row;
     margin: 0 auto;
     padding-bottom: 50px;
 }
 .personInfo {
-    font-size: 13pt;
+    height: 15vw;
+    font-size: 1vw;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 0 30px;
     margin-right: 30px;
 }
 .personPictureContainer {
-    height: 100%;
-    width: 20%;
+    width: 15vw;
+    height: 15vw;
+    background-size: cover;
     margin-left: 30px;
     background-color: black;
 }
@@ -345,5 +345,10 @@ input[id=senseOfGenderRange]::-moz-range-thumb {
     background-color: #777777;
 }
 .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
+    margin: 15px 0;
 }
