@@ -1,4 +1,7 @@
-const getRgbaCode = (values) => `rgba(${rgbValueFromPercent(values[0])}, ${rgbValueFromPercent(values[1])}, ${rgbValueFromPercent(values[2])}, ${alphaValueFromPercent(values[3])})`;
+const getRgbaCode = (values) => 
+    values.some(v => isNaN(v)) 
+        ? defaultColor
+        : `rgba(${rgbValueFromPercent(values[0])}, ${rgbValueFromPercent(values[1])}, ${rgbValueFromPercent(values[2])}, ${alphaValueFromPercent(values[3])})`;
 
 const getRangeRgbaCode = () => getRgbaCode(Object.values(ranges));
 
@@ -6,7 +9,16 @@ const getBarRgbaCode = () => getRgbaCode(Object.values(bars));
 
 const rgbValueFromPercent = (value) => Math.round((value / 100) * 255);
 
-const alphaValueFromPercent = (value, decimalPlaces = 2) => parseFloat(value / 100).toFixed(decimalPlaces);
+const alphaValueFromPercent = (value, decimalPlaces = 2) => 
+{
+    value = parseFloat(value / 100);
+
+    value % 1 !== 0
+        ? value = value.toFixed(decimalPlaces)
+        : value = value.toPrecision(1)
+
+    return value;
+}
 
 const percentFromRgbValue = (value) => Math.round((value * 100) / 255);
 

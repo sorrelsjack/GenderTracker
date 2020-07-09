@@ -1,3 +1,5 @@
+const defaultColor = 'rgba(0, 0, 0, 0)';
+
 const rangeIds = {
     feminine: 'feminineRange',
     nonBinary: 'nonBinaryRange',

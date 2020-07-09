@@ -3,7 +3,7 @@ const arrangeByDescendingDate = (history) => history.sort((a, b) => Date.parse(b
 const arrangeByAscendingDate = (history) => history.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 
 // Convert to a standardized ISO string and then parse it into a numerical value, which will be what is ultimately compared
-const existsInDateRange = (date, startDate, endDate) => Date.parse(convertToISO(date)) >= Date.parse(startDate) && Date.parse(convertToISO(date)) <= Date.parse(endDate);
+const existsInDateRange = (date, startDate, endDate) => Date.parse(convertToISO(date)) >= Date.parse(convertToISO(startDate)) && Date.parse(convertToISO(date)) <= Date.parse(convertToISO(endDate));
 
 const getFromDateRange = (history, startDate, endDate) => history.filter(h => existsInDateRange(h.date, startDate, endDate));
 
