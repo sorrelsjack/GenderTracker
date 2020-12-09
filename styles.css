@@ -10,7 +10,9 @@
 body {
     margin: 0;
     height: 100%;
+    background-color: rgb(75, 94, 129);
 }
+
 .fullHeight {
     height: calc(100vh - 96px);
 }
@@ -19,7 +21,7 @@ a {
 }
 .nav {
     width: 100%;
-    background-color: black;
+    background-color: rgb(31, 39, 53);
     overflow: hidden;
 }
 .nav a {
@@ -37,7 +39,7 @@ a {
 }
 .speech-bubble {
 	position: relative;
-    background: rgba(0, 0, 0, .1);
+    background: white;
 	border-radius: .4em;
 }
 .speech-bubble:after {
@@ -48,7 +50,7 @@ a {
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-left-color: rgba(0, 0, 0, .1);
+	border-left-color: white;
 	border-right: 0;
 	border-bottom: 0;
 	margin-top: -10px;
@@ -396,4 +398,8 @@ input[id=senseOfGenderRange]::-moz-range-thumb {
     width: 100%;
     text-align: center;
     margin: 15px 0;
+}
+
+.vintagecoyote {
+  color: white;
 }
