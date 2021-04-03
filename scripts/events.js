@@ -1,4 +1,4 @@
-const handleRangeValueChange = (event) => {
+/*const handleRangeValueChange = (event) => {
     const { id, value } = event.target;
     ranges[id] = value;
     changeCurrentCircleColor();
@@ -55,5 +55,5 @@ handleChartTypeOptionChange = (event) => {
     const { value } = event.target;
 
     if (value === types.bar) drawBarChart();
-    if (value === types.line) drawLineCharts();*/
-}
+    if (value === types.line) drawLineCharts();
+}*/

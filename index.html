@@ -5,7 +5,6 @@
     <title>Gender Diary</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
-    <link rel="stylesheet" href="FontAwesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
@@ -23,77 +22,8 @@
     <script type="text/javascript" src="scripts/ui.js"></script>
 </head>
 
-<body onload="initialize()">
-    <object name="navBar" type="text/html" width="100%" height="60px" data="html/nav.html"></object>
-    <div class="title">
-        Gender Diary
-    </div>
-    <div class="indexContainer">
-        <div class="historyContainer" id="historyContainer">
-            <span>History (Most Recent to Least Recent)</span>
-            <div class="circlesContainer" id="circlesContainer"></div>
-            <div class="historyEntryContainer" id="historyEntryContainer"></div>
-            <button onclick="handleClearHistoryPressed()">Clear History</button>
-        </div>
-        <div class="mainContainer">
-            <div>
-                <p class="genderLabel">Feminine</p>
-                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
-                    id="feminineRange">
-            </div>
-            <div>
-                <p class="genderLabel">Non-Binary</p>
-                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
-                    id="nonBinaryRange">
-            </div>
-            <div>
-                <p class="genderLabel">Masculine</p>
-                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
-                    id="masculineRange">
-            </div>
-            <div>
-                <p class="genderLabel">Sense of Gender</p>
-                <input type="range" min="0" max="100" value="0" class="slider" onchange="handleRangeValueChange(event)"
-                    id="senseOfGenderRange">
-            </div>
-            <div class="mainCircleContainer" onclick="handleCurrentCircleInteraction()" onmouseover="handleCurrentCircleInteraction()">
-                <div class="circle tooltip" id="currentCircle">
-                    <span class="tooltiptext" id="tooltipText"></span>
-                </div>
-            </div>
-            <div class="logSectionContainer">
-                <input type="text" name="dateTimePicker" id="dateTimePicker" readonly></input>
-                <textarea class="logTextArea" rows="7" id="logTextArea"></textarea>
-                <button onclick="handleLogGenderButtonPressed()">Log This Gender</button>
-            </div>
-        </div>
-        <div class="chartContainer" id="chartContainer">
-            <span>Average Gender Percentage</span>
-            <div class="chartPickerContainer">
-                <span class="chartPickerTitle">Timeframe</span>
-                <input class="chartPicker" type="text" name="rangeDatePicker" id="rangeDatePicker" readonly />
-            </div>
-            <div class="chartPickerContainer">
-                <span class="chartPickerTitle">Chart Type (WIP - Not Working)</span>
-                <select class="chartPicker" onchange="handleChartTypeOptionChange(event)" id="chartTypePicker">
-                    <option value="bar">Bar</option>
-                    <option value="line">Line</option>
-                </select>
-            </div>
-            <div class="genderChartsContainer">
-                <canvas id="barChartCanvas" height="200"></canvas>
-                <canvas class="lineChartCanvas" id="feminineChartCanvas"></canvas>
-                <canvas class="lineChartCanvas" id="nonBinaryChartCanvas"></canvas>
-                <canvas class="lineChartCanvas" id="masculineChartCanvas"></canvas>
-                <canvas class="lineChartCanvas" id="senseOfGenderCanvas"></canvas>
-                <div class="mainCircleContainer" onclick="handleChartCircleInteraction()" onmouseover="handleChartCircleInteraction()">
-                    <div class="largeCircle tooltip" id="largeCircle">
-                        <span class="tooltiptext" id="largeCircleTooltipText"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body >
+<body div onload="initialize()">
+    <div id="app"></div>
+</body>
 
 </html>
