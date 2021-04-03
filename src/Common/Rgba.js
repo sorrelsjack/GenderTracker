@@ -1,3 +1,5 @@
+const defaultColor = 'rgba(0, 0, 0, 0)';
+
 export const getRgbaCode = (values) => 
     values.some(v => isNaN(v)) 
         ? defaultColor

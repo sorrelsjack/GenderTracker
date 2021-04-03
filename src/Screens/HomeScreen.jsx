@@ -26,7 +26,7 @@ export const HomeScreen = () => {
             <div className='indexContainer'>
                 <HistorySection items={items} />
                 <GenderSliders onGenderAdded={handleGenderAdded} />
-                <GenderCharts />
+                <GenderCharts history={items} />
             </div>
         </div>
     )

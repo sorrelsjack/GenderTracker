@@ -1,13 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import { GenderCircle } from '../Components';
+import { 
+    ArrangeByAscendingDate, 
+    ArrangeByDescendingDate, 
+    percentFromRgbValue, 
+    percentFromAlphaValue,
+    getRgbaCode
+} from '../Common';
 
-export const GenderCharts = () => {
+export const GenderCharts = (props) => {
+    const { history, startDate, endDate } = props;
+
     const [circleColor, setCircleColor] = useState('rgba(0, 0, 0, 0)');
 
+    const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
+
     useEffect(() => {
+        if (!history) return;
         
-    }, [])
+        let start = startDate || ArrangeByAscendingDate(history)[0]?.date;
+        let end = endDate || ArrangeByDescendingDate(history)[0]?.date;
+
+        const hist = getFromDateRange(history, convertToISO(start), convertToISO(end));
+        const colors = hist.map(h => h.color);
+
+        const percents = {
+            feminine: calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0]))),
+            nonBinary: calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1]))),
+            masculine: calculateAverage(colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2]))),
+            senseOfGender: calculateAverage(colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])))
+        }
+
+        setCircleColor(getRgbaCode(Object.values(percents)));
+    }, [history, startDate, endDate])
 
     const handleChartTypeOptionChange = (e) => {
         // TODO: This
