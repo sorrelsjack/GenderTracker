@@ -80,6 +80,22 @@ button {
     display: inline-block;
     font-size: 14px;
 }
+.ant-btn, .ant-btn-primary, .ant-btn-sm {
+    background-color: black;
+    color: white;
+}
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner, .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner, .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+    background-color: black;
+    color: white;
+}
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+    border: 1px solid black;
+}
+.ant-picker-now-btn {
+    background-color: black;
+    color: white;
+    padding: 5px
+}
 .title {
     text-align: center;
     font-size: 30px;
@@ -187,8 +203,8 @@ button {
     margin-right: 5pt;
     margin-top: 5pt;
 }
-.fa-book-open {
-    line-height: 50px;
+.historyCircleIcon {
+    height: 100%;
     color: rgba(0, 0, 0, .3);
 }
 .historyEntryContainer {
@@ -199,7 +215,6 @@ button {
     margin-top: 10pt;
     margin-bottom: 10pt;
     background-color: white;
-    display: none;
     white-space: pre-wrap;
 }
 .historyEntryBody {
