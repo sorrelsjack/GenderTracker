@@ -1,19 +1,18 @@
 import React from 'react';
-import '../../styles.css'
 
 export const ContactScreen = () => {
     return (
-        <div class="fullHeight wrapper">
-            <div class="title">
+        <div className="fullHeight wrapper">
+            <div className="title">
                 Contact
             </div>
-            <div class="contactContainer">
-                <div class="placeholderBox"></div>
-                <div class="speech-bubble right contactFormContainer">
+            <div className="contactContainer">
+                <div className="placeholderBox"></div>
+                <div className="speech-bubble right contactFormContainer">
                     <div>
                         Etiam cursus quis felis quis ullamcorper. Fusce porta libero ligula, ut mattis arcu hendrerit ac.
                     </div>
-                    <form class="contactForm">
+                    <form className="contactForm">
                         <label for="nameInput">Name</label>
                         <input type="text" id="nameInput"></input>
                         <label for="emailInput">Email</label>

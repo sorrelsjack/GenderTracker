@@ -31,3 +31,5 @@ export const rgbaAsArray = (rgba) => rgba.substring(rgba.indexOf('(') + 1, rgba.
 export const presentBlueAsOwnColor = (value) => `rgba(0, 0, ${value}, 1)`;
 export const presentRedAsOwnColor = (value) => `rgba(${value}, 0, 0, 1)`;
 export const presentGreenAsOwnColor = (value) => `rgba(0, ${value}, 0, 1)`;
+
+export const calculateAverage = (values) => parseFloat(values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);

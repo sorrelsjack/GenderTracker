@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import './styles.css';
-import { GenderCircle, Slider } from '.';
+import React, { useEffect, useState, forwardRef } from 'react';
+import { Charts, GenderCircle, Slider } from '.';
 import { getRangeRgbaCode, ExistsInDateRange, ConvertToISO, RestoreLastSavedState } from '../Common';
+import { Space, DatePicker } from 'antd';
+import 'antd/dist/antd.css';
 import moment from 'moment';
-import GenderRepository from '../Common/GenderRepository';
 
 export const GenderSliders = (props) => {
     const { onGenderAdded } = props;
@@ -13,12 +13,13 @@ export const GenderSliders = (props) => {
     const [masculine, setMasculine] = useState(0);
     const [sense, setSense] = useState(0.0);
 
+    const [entry, setEntry] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
     const [circleColor, setCircleColor] = useState('rgba(0, 0, 0, 0)');
 
     const handleRangeValueChange = (e) => {
         const { id, value } = e.target;
-
-        // TODO: Make this... less like this
+        
         if (id === 'feminineRange') setFeminine(value);
         if (id === 'nonBinaryRange') setNonBinary(value);
         if (id === 'masculineRange') setMasculine(value);
@@ -31,7 +32,9 @@ export const GenderSliders = (props) => {
         setFeminine(values.feminine);
         setNonBinary(values.nonBinary);
         setMasculine(values.masculine);
-        setSense(values.sense)
+        setSense(values.sense);
+
+        setDateTimePicker();
     }, [])
 
     useEffect(() => {
@@ -39,36 +42,16 @@ export const GenderSliders = (props) => {
     }, [feminine, nonBinary, masculine, sense])
 
     const setDateTimePicker = () => {
-        const now = ConvertToISO(new Date(), true);
-    
-        const datePicker = document.getElementById("dateTimePicker");
-        datePicker.value = datePicker.maxDate = now;
+        setStartDate(new Date());
     }
 
     const handleLogGenderButtonPressed = () => {
-        const datePicker = document.getElementById("dateTimePicker");
-        const rangeDatePicker = $('#rangeDatePicker').data('daterangepicker');
-    
-        if (datePicker.value > datePicker.maxDate) {
+         if (startDate > new Date()) {
             alert("Please choose an earlier date and/or time.");
             return;
         }
-    
-        // Don't bother messing with this
-        const date = moment(`${datePicker.value}`, 'YYYY-MM-DD HH:mm:ss A', true).toISOString();
-        let entry = document.getElementById("logTextArea").value;
-    
-        onGenderAdded({ date, color: getRangeRgbaCode([feminine, nonBinary, masculine, sense]), entry: entry });
-    
-        //setDateTimePicker();
-        //addCircle(date, getRangeRgbaCode(), entry);
-    
-        const { startDate, endDate } = rangeDatePicker;
-    
-        // TODO: Can we get minDate to update dynamically?
-        //if (date < moment(rangeDatePicker.startDate, 'YYYY-MM-DD HH:mm:ss A', true)) rangeDatePicker.minDate = date;
-        //if (ExistsInDateRange(date, startDate, endDate)) drawBarChart(startDate, endDate);
-        //drawLineCharts();
+
+        onGenderAdded({ date: startDate.toISOString(), color: getRangeRgbaCode([feminine, nonBinary, masculine, sense]), entry: entry });
     }
 
     return (
@@ -81,8 +64,24 @@ export const GenderSliders = (props) => {
                 <GenderCircle color={circleColor} />
             </div>
             <div className="logSectionContainer">
-                <input type="text" name="dateTimePicker" id="dateTimePicker" readOnly></input>
-                <textarea className="logTextArea" rows="7" id="logTextArea"></textarea>
+                <Space direction='vertical' size={12}>
+                    <DatePicker 
+                        showTime
+                        inputReadOnly
+                        style={{ width: '100%' }}
+                        value={moment(startDate)}
+                        format={'YYYY-MM-DD hh:mm:ss A'}
+                        onChange={(value) => setStartDate(value)}
+                        onOk={(value) => setStartDate(value)}
+                        disabledDate={(current) => { return current > moment().endOf('day') }}
+                        allowClear={false} />
+                </Space>
+                <textarea 
+                    className="logTextArea" 
+                    rows="7" 
+                    id="logTextArea" 
+                    value={entry} 
+                    onChange={(e) => setEntry(e.target.value)}></textarea>
                 <button onClick={handleLogGenderButtonPressed}>Log This Gender</button>
             </div>
         </div>

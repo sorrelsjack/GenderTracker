@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { ArrangeByDescendingDate, FetchHistory, GetSpelledOutDate, percentFromAlphaValue, presentBlueAsOwnColor, presentGreenAsOwnColor, rgbaAsArray } from '../Common';
+import {
+    ArrangeByDescendingDate,
+    FetchHistory,
+    GetSpelledOutDate,
+    percentFromRgbValue,
+    percentFromAlphaValue,
+    presentRedAsOwnColor,
+    presentBlueAsOwnColor,
+    presentGreenAsOwnColor,
+    rgbaAsArray
+} from '../Common';
 import GenderRepository from '../Common/GenderRepository';
 import { GenderCircle } from './GenderCircle';
-import './styles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 
-// TODO: Include the little icon and special tooltip for the circle
 export const HistorySection = (props) => {
     const { items } = props;
 
@@ -22,8 +32,6 @@ export const HistorySection = (props) => {
             setHistory([]);
             setSelected({});
             GenderRepository.Instance().ClearItems();
-            //drawBarChart(); // TODO: Get this working
-            //drawLineCharts();
         }
     }
 
@@ -62,6 +70,7 @@ export const HistorySection = (props) => {
                             onMouseOver={() => handleCircleInteraction(h)}
                             key={h.date}
                             color={h.color}
+                            icon={h.entry && <FontAwesomeIcon className='historyCircleIcon' icon={faBookOpen} size={'lg'} />}
                             tooltip={<Tooltip item={h} />}
                             className='historyCircle' />
                     )

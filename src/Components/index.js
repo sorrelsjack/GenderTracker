@@ -1,3 +1,4 @@
+export * from './Charts';
 export * from './GenderCharts';
 export * from './GenderCircle';
 export * from './GenderSliders';

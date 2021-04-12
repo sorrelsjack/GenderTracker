@@ -17,12 +17,17 @@ import {
     ContactScreen
 } from './src/Screens';
 
+/*
+// TODO: Pronoun selection?
+// TODO: Change the tooltip theme based on how light or dark a color is
+// TODO: Would titles be cool? (ms, mr, mx)
+*/
 export const App = () => {
     return (
         <Router>
             <Navbar />
             <Switch>
-                <Route path="/">
+                <Route exact path="/">
                     <HomeScreen />
                 </Route>
                 <Route path="/about">

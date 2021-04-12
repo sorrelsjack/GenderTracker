@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { FetchHistory } from '../Common';
 import { HistorySection, GenderSliders, GenderCharts } from '../Components';
-import '../../styles.css'
 import GenderRepository from '../Common/GenderRepository';
 
 export const HomeScreen = () => {
@@ -15,7 +15,7 @@ export const HomeScreen = () => {
 
         localStorage.setItem(date, JSON.stringify({ color, entry }));
         GenderRepository.Instance().AddItem({ date, color, entry });
-        setItems(GenderRepository.Instance().GetItems());
+        setItems(GenderRepository.Instance().GetItems().sort((a, b) => b.date - a.date));
     }
 
     return (

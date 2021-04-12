@@ -1,15 +1,29 @@
+import { 
+    ArrangeByAscendingDate, 
+    ArrangeByDescendingDate,
+    GetFromDateRange,
+    FetchHistory,
+    ConvertToISO,
+    rgbaAsArray,
+    calculateAverage,
+    GetSpelledOutDate,
+    percentFromRgbValue,
+    percentFromAlphaValue
+} from '../Common';
+
 Chart.defaults.global.defaultFontFamily = "Titillium";
 Chart.defaults.global.defaultFontColor = "black";
 
 let barChart = null;
+let lineChart = null;
 
-const createLineChart = (element, label, color, data) => {
-    const history = arrangeByAscendingDate(fetchHistory());
+export const CreateLineChart = (element, label, color, data, start, end) => {
+    const history = ArrangeByAscendingDate(GetFromDateRange(FetchHistory(), start, end));
 
-    new Chart(element, {
+    lineChart = new Chart(element, {
         type: 'line',
         data: {
-            labels: history.map(h => getSpelledOutDate(h.date)),
+            labels: history.map(h => GetSpelledOutDate(h.date)),
             datasets: [{
                 label: label,
                 borderColor: color,
@@ -19,7 +33,7 @@ const createLineChart = (element, label, color, data) => {
     });
 }
 
-const createBar = (label, data, color) => ({
+const CreateBar = (label, data, color) => ({
     label: label,
     data: data,
     backgroundColor: color,
@@ -27,26 +41,33 @@ const createBar = (label, data, color) => ({
     borderWidth: 1
 })
 
-const drawLineCharts = () => {
+export const DrawLineCharts = (startDate, endDate) => {
     const feminineCanvas = document.getElementById("feminineChartCanvas").getContext("2d");
     const masculineCanvas = document.getElementById("masculineChartCanvas").getContext("2d");
     const nonBinaryCanvas = document.getElementById("nonBinaryChartCanvas").getContext("2d");
     const senseOfGenderCanvas = document.getElementById("senseOfGenderCanvas").getContext("2d");
 
     $('.lineChartCanvas').css('display', 'block');
+    lineChart?.destroy();
 
-    const history = arrangeByAscendingDate(fetchHistory());
+    if (!startDate || !endDate) {
+        const history = FetchHistory();
+        startDate = ArrangeByAscendingDate(history)[0]?.date;
+        endDate = ArrangeByDescendingDate(history)[0]?.date;
+    }
+
+    const history = GetFromDateRange(FetchHistory(), ConvertToISO(startDate), ConvertToISO(endDate));
     const colors = history.map(h => h.color);
 
-    createLineChart(feminineCanvas, 'Feminine', 'rgba(255, 0, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0])));
-    createLineChart(nonBinaryCanvas, 'Non-Binary', 'rgba(0, 255, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])));
-    createLineChart(masculineCanvas, 'Masculine', 'rgba(0, 0, 255, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])));
-    createLineChart(senseOfGenderCanvas, 'Sense of Gender', 'rgba(0, 0, 0, .5)', colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])));
+    CreateLineChart(feminineCanvas, 'Feminine', 'rgba(255, 0, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[0])), startDate, endDate);
+    CreateLineChart(nonBinaryCanvas, 'Non-Binary', 'rgba(0, 255, 0, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[1])), startDate, endDate);
+    CreateLineChart(masculineCanvas, 'Masculine', 'rgba(0, 0, 255, .5)', colors.map(c => percentFromRgbValue(rgbaAsArray(c)[2])), startDate, endDate);
+    CreateLineChart(senseOfGenderCanvas, 'Sense of Gender', 'rgba(0, 0, 0, .5)', colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])), startDate, endDate);
 
     document.getElementById("barChartCanvas").style.display = "none";
 }
 
-const drawBarChart = (startDate, endDate) => {
+export const DrawBarChart = (startDate, endDate) => {
     document.getElementById("feminineChartCanvas").style.display = "none";
     document.getElementById("masculineChartCanvas").style.display = "none";
     document.getElementById("nonBinaryChartCanvas").style.display = "none";
@@ -57,12 +78,12 @@ const drawBarChart = (startDate, endDate) => {
     const barCanvas = document.getElementById("barChartCanvas").getContext("2d");
 
     if (!startDate || !endDate) {
-        const history = fetchHistory();
-        startDate = arrangeByAscendingDate(history)[0]?.date;
-        endDate = arrangeByDescendingDate(history)[0]?.date;
+        const history = FetchHistory();
+        startDate = ArrangeByAscendingDate(history)[0]?.date;
+        endDate = ArrangeByDescendingDate(history)[0]?.date;
     }
 
-    const history = getFromDateRange(fetchHistory(), convertToISO(startDate), convertToISO(endDate));
+    const history = GetFromDateRange(FetchHistory(), ConvertToISO(startDate), ConvertToISO(endDate));
     const colors = history.map(h => h.color);
 
     const percents = {
@@ -72,17 +93,17 @@ const drawBarChart = (startDate, endDate) => {
         senseOfGender: calculateAverage(colors.map(c => percentFromAlphaValue(rgbaAsArray(c)[3])))
     }
 
-    bars = percents;
+    const bars = percents;
 
     barChart = new Chart(barCanvas, {
         type: 'bar',
         data: {
             labels: ['Percentage'],
             datasets: [
-                createBar('Feminine', [percents.feminine], 'rgba(255, 0, 0, .5)'), 
-                createBar('Non-Binary', [percents.nonBinary], 'rgba(0, 255, 0, .5)'),
-                createBar('Masculine', [percents.masculine], 'rgba(0, 0, 255, .5)'),
-                createBar('Sense of Gender', [percents.senseOfGender], 'rgba(0, 0, 0, .5)')
+                CreateBar('Feminine', [percents.feminine], 'rgba(255, 0, 0, .5)'), 
+                CreateBar('Non-Binary', [percents.nonBinary], 'rgba(0, 255, 0, .5)'),
+                CreateBar('Masculine', [percents.masculine], 'rgba(0, 0, 255, .5)'),
+                CreateBar('Sense of Gender', [percents.senseOfGender], 'rgba(0, 0, 0, .5)')
             ],
         },
         options: {
@@ -105,6 +126,4 @@ const drawBarChart = (startDate, endDate) => {
             }
         }
     });
-
-    changeLargeCircleColor();
 }

@@ -1,4 +1,9 @@
-import { percentFromRgbValue, percentFromAlphaValue, ArrangeByDescendingDate } from '.';
+import { 
+    rgbaAsArray, 
+    percentFromRgbValue, 
+    percentFromAlphaValue, 
+    ArrangeByDescendingDate 
+} from '.';
 
 export const FetchHistory = () => {
     var values = [],

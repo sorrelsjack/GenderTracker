@@ -1,16 +1,9 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useHistory
+    Link
 } from "react-router-dom";
 
 export const Navbar = () => {
-    const history = useHistory();
-
-    // TODO: Fix this so it actually renders the screen it needs to...
     return (
         <div className="nav">
             <Link to='/'>Home</Link>
