@@ -31,7 +31,7 @@ module.exports = {
             {
                 test: /\.(jpg|png)$/,
                 use: {
-                    loader: 'url-loader',
+                    loader: 'url-loader?limit=8192',
                     options: {
                         name: '[name].[ext]',
                         outputPath: 'assets/'
@@ -46,7 +46,8 @@ module.exports = {
     mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html'
+            template: 'index.html',
+            favicon: './src/assets/favicon.ico'
         })
     ]
 

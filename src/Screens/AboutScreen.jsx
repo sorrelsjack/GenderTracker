@@ -1,4 +1,6 @@
 import React from 'react';
+import Nara from '../Assets/nara.png';
+import Captain from '../Assets/captain.png'
 
 export const AboutScreen = () => {
     return (
@@ -16,7 +18,7 @@ export const AboutScreen = () => {
                     <p>Fun fact about me -- I first became interested in the creation of websites as a kid when I made Neopets
                 web pages!</p>
                 </div>
-                <img className="personPictureContainer" src="../assets/nara.png"></img>
+                <img className="personPictureContainer" src={Nara}></img>
             </div>
             <div className="personInfoContainer">
                 <div className="personInfo speech-bubble">Hello there. This is placeholder text! Cras nunc justo, volutpat eget
@@ -28,7 +30,7 @@ export const AboutScreen = () => {
                 torquent per conubia nostra, per inceptos himenaeos. Aenean libero libero, varius ac pharetra vitae, posuere
                 non dui. Integer posuere neque eget risus ullamcorper, a venenatis urna hendrerit. Nunc non facilisis
             ligula, in congue eros.</div>
-                <img className="personPictureContainer" src="../assets/captain.png"></img>
+                <img className="personPictureContainer" src={Captain}></img>
             </div>
             <div className="footer">
                 <a className="vintagecoyote" href="https://twitter.com/vintagecoyote">Art on this page is by @vintagecoyote on Twitter!</a>
