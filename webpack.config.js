@@ -16,7 +16,6 @@ module.exports = {
                 use: ['babel-loader'],
             },
             { test: /\.(css)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: ['style-loader', 'css-loader'] },
-            { test: /.(png|jpg|woff|woff2|eot|ttf|svg|gif)$/, loader: 'url-loader?limit=1024000' },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [
@@ -28,7 +27,17 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'assets/'
+                    }
+                },
+            },
         ],
     },
     resolve: {
